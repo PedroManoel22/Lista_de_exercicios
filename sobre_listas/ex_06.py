@@ -1,34 +1,32 @@
-# Importa a biblioteca 'typing' para tipagem de dados, o que é uma boa prática
-# para projetos maiores e facilita a leitura do código.
-from typing import List, Dict
+# Faça um programa que peça as quatro notas de 10 alunos, calcule e armazene num vetor a média de cada aluno,
+# imprima o número de alunos com média maior ou igual a 7.0.
 
-# 1. Função para coletar nomes e notas. É a mais importante.
-def coleta_dados_alunos(quantidade_alunos: int, quantidade_notas: int) -> List[Dict]:
+def coleta_dados_alunos(quantidade_alunos, quantidade_notas):
 
     alunos = []
-    
-    for i in range(quantidade_alunos):
-       
+
+    for i in range(1, quantidade_alunos + 1):
+
         while True:
 
-            nome = input(f'Insira o nome do {i+1}º aluno: ')
+            nome = input(f'Insira o nome do {i} aluno: ')
 
             if nome.strip() and not nome.isdigit():
 
                 break
 
-            print('Por favor, insira um nome válido.')
-            
+            print('\033[1;31mPor favor insira um nome válido!\033[m')
+
         notas_validas = []
 
-        for j in range(quantidade_notas):
+        for j in range(1, quantidade_notas + 1):
 
             while True:
 
                 try:
-                   
-                    nota = float(input(f'Insira a {j+1}ª nota de {nome}: '))
-                    
+                        
+                    nota = float(input(f'Insira a {j}ª nota de {nome}: '))
+                            
                     if 0 <= nota <= 10:
 
                         notas_validas.append(nota)
@@ -36,50 +34,57 @@ def coleta_dados_alunos(quantidade_alunos: int, quantidade_notas: int) -> List[D
 
                     else:
 
-                        print('Por favor, insira uma nota entre 0 e 10.')
+                        print('\033[1;31mPor favor, insira uma nota entre 0 e 10.\033[m')
 
                 except ValueError:
 
-                    print('Por favor, coloque um valor numérico válido.')
-        
+                    print('\033[1;31mPor favor, coloque um valor numérico válido.\033[m')
+    
         aluno_info = {'nome': nome, 'notas': notas_validas}
         alunos.append(aluno_info)
-        
+
     return alunos
 
-# 2. Função para calcular a média das notas
-def calcula_media(notas: List[float]) -> float:
-    """
-    Calcula a média de uma lista de notas.
-    """
-    # Evita divisão por zero
-    if not notas:
-        return 0.0
-    return sum(notas) / len(notas)
 
-# 3. Função para imprimir o resultado e contar os aprovados
-def exibe_resultados(alunos: List[Dict]):
-    """
-    Itera sobre a lista de alunos, calcula as médias e exibe o resultado final.
-    """
+
+def calcular_media(notas):
+
+    media = 0
+
+    for nota in notas:
+
+        media += nota
+
+    media = media / QUANTIDADE_NOTAS
+    return media
+
+
+def exibir_dados(dados):
+
     aprovados = 0
-    print('\n--- Resultados ---')
-    for aluno in alunos:
-        media = calcula_media(aluno['notas'])
-        print(f"O aluno {aluno['nome']} tem a média de {media:.2f}")
-        
-        if media >= 7.0:
+    LARGURA = 30
+    TITULO = 'Resultado'
+    print('-' * LARGURA)
+    print(TITULO.center(30))
+    print('-' * LARGURA)
+
+    for aluno in dados:
+
+        media = calcular_media(aluno['notas'])
+        print(f'O aluno {aluno['nome']} teve as seguintes notas: {aluno['notas']} e ficou com a média de {media:.2f}')
+
+        if media >= 7:
+
             aprovados += 1
     
-    print(f"\n{aprovados} aluno(s) com média igual ou superior a 7.0.")
+    print(f'{aprovados} alunos aprovados')
 
-# Bloco principal para executar o programa
+
+
 if __name__ == '__main__':
-    QUANTIDADE_ALUNOS = 2
-    QUANTIDADE_NOTAS = 2
-    
-    # Apenas uma chamada de função para coletar todos os dados
-    lista_de_alunos = coleta_dados_alunos(QUANTIDADE_ALUNOS, QUANTIDADE_NOTAS)
-    
-    # Chama a função que exibe os resultados
-    exibe_resultados(lista_de_alunos)
+
+    QUANTIDADE_ALUNOS = 10
+    QUANTIDADE_NOTAS = 4
+    lista_alunos = coleta_dados_alunos(QUANTIDADE_ALUNOS, QUANTIDADE_NOTAS)
+    exibir_dados(lista_alunos)
+          
