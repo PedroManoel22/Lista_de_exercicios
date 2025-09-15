@@ -8,40 +8,48 @@
 # O programa deve no final emitir uma classificação sobre a participação da pessoa no crime. 
 # Se a pessoa responder positivamente a 2 questões ela deve ser classificada como "Suspeita", entre 3 e 4 como "Cúmplice"
 # e 5 como "Assassino". Caso contrário, ele será classificado como "Inocente".
-pergunta_1 =  "Telefonou para a vítima?"
-while True:
-    try:
-
-        p1 = input('Telefonou para a vítima? ').upper().strip()[0]
-        p2 = input('Esteve no local do crime? ').upper().strip()[0]
-        p3 = input('Mora perto da vítima? ').upper().strip()[0]
-        p4 = input('Devia para a vítima? ').upper().strip()[0]
-        p5 = input('Já trabalhou com a vítima? ').upper().strip()[0]
-
-        if p1 in 'SN' and p2 in 'SN' and p3 in 'SN' and p4 in 'SN' and p5 in 'SN':
-
-            resp_1 = p1
-            resp_2 = p2
-            resp_3 = p3
-            resp_4 = p4
-            resp_5 = p5
-
-            break
-
-        else:
-
-            print('\033[1;31mColoque apenas\033[m \033[0;49;96msim\033[m \033[1;31mou\033[m \033[0;49;96mnão\033[m')
 
 
 
-    except IndexError:
+def valida_resposta(pergunta):
+   
+    while True:
+        try:
+            resposta = input(pergunta).upper().strip()[0]
+            if resposta in 'SN':
+                return resposta
+            else:
+                print('Coloque apenas [S] ou [N].')
+        except (IOError, IndexError):
+            print('Coloque apenas [S] ou [N].')
 
-        print('\033[1;31mPorfavor coloque alguma resposta!\033[m')
-
-print(resp_1)
-print(resp_2)
-print(resp_3)
-print(resp_4)
-print(resp_5)
-
+def perguntas_investigacao():
     
+    perguntas = [
+        "Telefonou para a vítima? ",
+        "Esteve no local do crime? ",
+        "Mora perto da vítima? ",
+        "Devia para a vítima? ",
+        "Já trabalhou com a vítima? "
+    ]
+
+    respostas = []
+    print("Responda apenas [S] para Sim ou [N] para Não.\n")
+    for pergunta in perguntas:
+        resposta = valida_resposta(pergunta)
+        respostas.append(resposta)
+
+    pontos = respostas.count('S')
+
+    if pontos == 5:
+        return "Assassino" 
+    elif pontos == 3 or pontos == 4:
+        return "Cúmplice"
+    elif pontos == 2:
+        return "Suspeito"
+    else:
+        return "Inocente"
+
+if __name__ == '__main__':
+    resultado = perguntas_investigacao()
+    print(f"O resultado da investigação é: {resultado}")
