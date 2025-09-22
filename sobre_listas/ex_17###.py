@@ -19,6 +19,8 @@
 
 
 
+# temos que corrigir este exercicio, devemos fazer uma unica função para pedir os dados dos atletas
+QUANTIDADE = 5
 def pedir_nomes():
 
     nomes = []
@@ -33,7 +35,7 @@ def pedir_nomes():
         
         if not nome:
 
-            return exibir_dados(nomes, )
+            return exibir_dados(nomes, saltos(QUANTIDADE, nome))
         
         else:
 
@@ -74,75 +76,3 @@ def exibir_dados(nomes, saltos):
 
 
 print(pedir_nomes())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
