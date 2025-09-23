@@ -40,38 +40,3 @@ Jogador         Votos           %
 11              1               12,5%
 O melhor jogador foi o número 9, com 4 votos, correspondendo a 50% do total de votos.
 '''
-votos = {}
-print("Enquete: Quem foi o melhor jogador?")
-
-while True:
-    try:
-        voto = int(input("Número do jogador (0=fim): "))
-
-        if voto == 0:
-            break
-
-        elif 1 <= voto <= 23:
-            votos[voto] = votos.get(voto, 0) + 1
-
-        else:
-            print("Informe um valor entre 1 e 23 ou 0 para sair!")
-
-    except ValueError:
-        print("Entrada inválida. Digite um número.")
-
-
-
-
-def calcular_percentual(votos, total):
-    
-
-    if total == 0:
-        return 0.0
-    
-    return (votos/total) * 100
-total = sum(votos.values())
-jogadores_ordenados = sorted(votos.keys())
-for jogador in jogadores_ordenados:
-    votos_jogadores = votos[jogador]
-print(calcular_percentual(votos_jogadores, total))
-
