@@ -1,0 +1,9 @@
+
+Resultados das votações:
+
+Foram computados {total_votos} votos.
+
+Jogador          votos               %
+    2              2               100.0 %
+
+O melhor jogador foi o camisa 1, com 100.0%
