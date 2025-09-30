@@ -31,7 +31,8 @@
 
 # O Sistema Operacional mais votado foi o Unix, com 3500 votos, correspondendo a 40%
 
-from random import randint
+import random
+import numpy as np
 
 print('Qual o melhor sistema operacional para uso em servidores?')
 
@@ -50,7 +51,7 @@ print('''
       ''')
 
 votos = []
-QUANTIDADE_VOTOS = 20000
+QUANTIDADE_VOTOS = 20125
 
 sistemas_operacionais = {'Windows Server': 1,
                          'Unix': 2,
@@ -65,7 +66,8 @@ def coleta_votos():
     total_votos = 0
     for i in range(1, QUANTIDADE_VOTOS + 1):
 
-        voto_int = randint(1,6)
+       
+        voto_int = np.random.randint(1, 6)
 
         if i == QUANTIDADE_VOTOS + 1:
             voto_int = 0
