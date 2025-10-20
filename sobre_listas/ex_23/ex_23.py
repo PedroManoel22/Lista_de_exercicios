@@ -26,10 +26,58 @@
 
 # Espaço total ocupado: 2581,57 MB
 # Espaço médio ocupado: 430,26 MB
+# Nome do arquivo
 
-# O arquivo de entrada deve ser lido uma única vez, e os dados armazenados em memória, caso sejam necessários, de forma a agilizar a execução do programa. 
-# A conversão da espaço ocupado em disco, de bytes para megabytes deverá ser feita através de uma função separada, que será chamada pelo programa principal. 
-# O cálculo do percentual de uso também deverá ser feito através de uma função, que será chamada pelo programa principal.
+nome_arquivo = "lista_de_exercicios/Lista_de_exercicios/sobre_listas/ex_23/usuarios.txt"
+dados_usuarios = {}
 
-x = 456123789 / (1024 * 1024)
-print(f'{x:.2f}')
+try:
+    with open(nome_arquivo, 'r', encoding='utf-8') as arquivo:
+        
+        for i, linha in enumerate(arquivo):
+            partes = linha.strip().split()
+            if len(partes) == 2:
+                nome = partes[0]
+                numero = partes[1]
+                
+                dados_usuarios[nome] = numero
+
+except FileNotFoundError:
+    print(f"Erro: O arquivo \033[1;31m'{nome_arquivo}'\033[m não foi encontrado.")
+except Exception as e:
+    print(f"Ocorreu um erro inesperado: {e}")
+
+endereco_arquivo = "lista_de_exercicios/Lista_de_exercicios/sobre_listas/ex_23/relatório.txt"
+
+cabecalho = """
+ACME Inc.               Uso do espaço em disco pelos usuários
+------------------------------------------------------------------------
+Nr.  Usuário        Espaço utilizado     % do uso
+"""
+
+LARGURA_NOME = 15   
+LARGURA_MB = 10         
+LARGURA_PCT = 8
+espaco_total = 0
+
+try:
+    with open(endereco_arquivo, 'w', encoding='utf-8') as arquivo:
+        arquivo.write(cabecalho)
+        for indice, nome in enumerate(dados_usuarios):
+            indice = indice + 1
+            indice_str = str(indice)
+            espaco = round(int(dados_usuarios[nome]) / (1024 * 1024), 2)
+            espaco_str = str(espaco)
+            espaco_total += int(dados_usuarios[nome])
+            arquivo.write(
+    f"{indice_str} "  
+    f"{nome:<{LARGURA_NOME}} " 
+    f"{espaco_str:>{LARGURA_MB}} MB\n"
+)
+        espaco_total = round(espaco_total / (1024 * 1024), 2)
+        espaco_total_str = str(espaco_total)    
+        arquivo.write(f'\nEspaço total ocupado: {espaco_total_str} MB')
+    print(f"Arquivo '\033[1;32m{nome_arquivo}\033[m' criado e escrito com sucesso.")
+
+except IOError as e:
+    print(f"Erro ao manipular o arquivo: {e}")
