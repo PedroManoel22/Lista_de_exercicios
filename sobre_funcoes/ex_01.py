@@ -23,7 +23,6 @@ def imprimir():
         except ValueError:
             print('\033[1;31mPor favor coloque um número inteiro\033[m')
             
-        
         except Exception as e:
             print(f'ERRO inesperado: {e}')
 
