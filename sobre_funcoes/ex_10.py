@@ -9,6 +9,10 @@ from random import randint
 from time import sleep
 
 def primeira_jogada():
+    ganhou = [7, 11]
+    perdeu = [2, 3, 12]
+    ponto = [4, 5, 6, 8, 9, 10]
+                
     while True:
         x = input('Aperte enter para jogar os dados: ')
         if x == '': # enter foi apertado
@@ -25,10 +29,7 @@ def primeira_jogada():
                 num2 = randint(1, 6)
                 print(num2)
                 soma = num1 + num2
-                ganhou = [7, 11]
-                perdeu = [2, 3, 12]
-                ponto = [4, 5, 6, 8, 9, 10]
-                
+              
                 if soma in ganhou:
                     return ganhar()
 
@@ -45,13 +46,15 @@ def primeira_jogada():
 
 
 def ganhar():
-    print('\n\033[1;32mNATUTRAL\033[m\n')
-    print('Parabéns você ganhou!\n')
+    print('\n\033[1;32mNATUTRAL\033[m\n'
+          'Parabéns você ganhou!\n'
+          'Obrigado por jogar')
 
 
 def perder():
-    print('\n\033[1;31mCRAPS\033[m\n')
-    print('Você perdeu!\n')
+    print('\n\033[1;31mCRAPS\033[m\n'
+          'Você perdeu!\n'
+          'Obrigado por jogar')
 
 
 def continuar(num_acertar):
@@ -85,6 +88,10 @@ def continuar(num_acertar):
         
         elif soma == num_acertar:
              print('\033[1;32mParabéns você ganhou!\033[m')
+             break
+        
+    print()
+    print('Obrigado por jogar')
 
 
 if __name__ == '__main__':
