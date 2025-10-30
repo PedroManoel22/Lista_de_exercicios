@@ -1,4 +1,4 @@
-# Faça uma função que informe a quantidade de dígitos de um determinado número inteiro informado~
+# Faça uma função que informe a quantidade de dígitos de um determinado número inteiro informado.
 
 def qtd_digitos(num):
     num_str = str(num)
@@ -13,3 +13,6 @@ if __name__ == '__main__':
 
         except ValueError:
             print('\033[1;31mPor favor coloque um número inteiro!\033[m')
+        
+        except Exception as e:
+            print(f'Erro inesperado: {e.__name__}')
