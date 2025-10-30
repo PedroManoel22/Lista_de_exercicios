@@ -70,5 +70,8 @@ def saida(hora, conversao, minutos):
         hora = hora - 12
         print(f'Depois: {hora}:{minutos} {manha_tarde}') 
 
+
+
 if __name__ == '__main__':
     entrada()
+    print('Obrigado, volte sempre!🥰')
