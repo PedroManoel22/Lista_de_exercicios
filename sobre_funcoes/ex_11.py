@@ -4,9 +4,31 @@
 
 from datetime import datetime
 
-try:
-    # Tenta criar um objeto datetime a partir de uma string
-    data = datetime.strptime("2024-10-31", "%Y-%m-%d")
-    print("Data válida:", data)
-except ValueError:
-    print("Formato de data inválido.")
+def valida_data():
+    data_str = input("Digite a data no formato dd/mm/aaaa: ")
+    
+    try:
+        datetime.strptime(data_str, '%d/%m/%Y')
+        return data_str
+
+    except ValueError:
+        print("\033[1;31mFormato de data inválido. Use dd/mm/aaaa.\033[m")
+        return None
+
+
+def data_mes_extenso(data:str):
+    meses = ['Janeiro', 'Fevereiro', 'Maço', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+    data_lista = data.split('/')
+    dia = data_lista[0]
+    mes = data_lista[1]
+    ano = data_lista[2]
+    posicao = int(mes) - 1
+    return f'{dia} de {meses[posicao]} de {ano}'
+    
+
+
+if __name__ == '__main__':
+    data_valida = valida_data()
+    data_extenso = data_mes_extenso(data_valida)
+    print(data_extenso)
+    
