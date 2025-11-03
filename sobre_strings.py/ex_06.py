@@ -1,6 +1,5 @@
-# Data com mês por extenso. Construa uma função que receba uma data no formato DD/MM/AAAA e 
-# devolva uma string no formato D de mes_por_extenso de AAAA. Opcionalmente, valide a data e 
-# retorne None caso a data seja inválida.
+# Data por extenso. Faça um programa que solicite a data de nascimento (dd/mm/aaaa) do usuário e imprima a data com o nome do mês
+# por extenso.
 
 from datetime import datetime
 
@@ -14,6 +13,7 @@ def valida_data():
 
         except ValueError:
             print("\033[1;31mFormato de data inválido. Use dd/mm/aaaa.\033[m")
+            continue
 
 
 
@@ -24,7 +24,7 @@ def data_mes_extenso(data:str):
     mes = data_lista[1]
     ano = data_lista[2]
     posicao = int(mes) - 1
-    return f'{dia} de {meses[posicao]} de {ano}'
+    return f'\033[1;32m{dia} de {meses[posicao]} de {ano}\033[m'
     
 
 
@@ -32,4 +32,3 @@ if __name__ == '__main__':
     data_valida = valida_data()
     data_extenso = data_mes_extenso(data_valida)
     print(data_extenso)
-    
