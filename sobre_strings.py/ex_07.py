@@ -38,5 +38,3 @@ if __name__  == '__main__':
     frase_valida = valida_frase()
     print(conta_vogais_espacos(frase_valida))
     
-
-    
