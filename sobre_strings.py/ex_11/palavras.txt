@@ -1,0 +1,7 @@
+caderno
+folha
+cachorro
+computador
+celular
+mesa
+cama
