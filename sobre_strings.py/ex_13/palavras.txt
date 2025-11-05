@@ -1,0 +1,13 @@
+cachorro
+casa
+mesa
+cadeira
+teclado
+computador
+grama
+guitarra
+bancada
+geladeira
+pia
+foto
+quadro
