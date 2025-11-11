@@ -34,15 +34,30 @@ def ler_arquivo():
         enderecos = arquivo.read().split()
     return enderecos
 
-IPV4_REGEX = r"^(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|\d)$"
 
-def valida_enderecos_gera_relatorio(enderecos):
+PADRAO_IP_SIMPLES = re.compile(r'^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$') 
+
+def validar_ipv4_corrigido(ip_string):
     validos = []
-    for endereco in enderecos:
-        valido_invalido =  re.fullmatch(IPV4_REGEX, endereco) is not None
-        if valido_invalido:
-            validos.append(valido_invalido)
-    return validos
+    invalidos = []
+
+    for ip in ip_string:
+        octetos_capturados = PADRAO_IP_SIMPLES.findall(ip)
+        if not octetos_capturados:
+            return False
+
+        octetos_str = octetos_capturados[0]
+
+        for octeto_str in octetos_str:
+            octeto_int = int(octeto_str)
+            
+            if not (0 <= octeto_int <= 255):
+                invalidos.append(ip)
+                
+        validos.append(ip)
+    print(validos)
+    print(invalidos)
+
 
 enderecos = ler_arquivo()
-print(valida_enderecos_gera_relatorio('200.135.80.9'))
+validar_ipv4_corrigido(enderecos)
