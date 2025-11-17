@@ -34,11 +34,13 @@ class Tamagushi:
     def alterar_idade(self):
         self.idade = pede_valida_idade(alterar=True, idade_antiga=self.idade)
     
-
+    def ver_dados(self):
+        print('\n---Dados do tamagushi---\n')
+        print(f'Nome: {self.nome}\n'
+              f'Fome: {self.fome}\n'
+              f'Saúde: {self.saude}\n'
+              f'Idade: {self.idade}\n')
     
-
-        
-# nome ok
 
 def pede_valida_nome(alterar=False, nome_antigo='nenhum'):
     if not alterar:
@@ -82,7 +84,7 @@ def pede_valida_nome(alterar=False, nome_antigo='nenhum'):
             else:
                 return nome
             
-# fome ok            
+         
 def pede_valida_fome(alterar=False, fome_antiga=0):
     fome_valida = [x for x in range(0, 101)]
 
@@ -123,7 +125,7 @@ def pede_valida_fome(alterar=False, fome_antiga=0):
             except ValueError:
                 print('\n\033[1;31mPor favor insira um valor inteiro!\n\033[m')
 
-# saude ok
+
 def pede_valida_saude(alterar=False, saude_antiga=0):
     saude_valida = [x for x in range(0, 101)]
 
@@ -185,12 +187,13 @@ def pede_valida_idade(alterar=False, idade_antiga=0):
             except ValueError:
                 print('\n\033[1;31mPor favor insira um valor inteiro!\n\033[m')
     
+    # alterar idade
     else:
         while True:
             print('\n\033[1;36m----Alterando a idade do tamagushi----\033[m')
 
             try:
-                idade = int(input('Insira a idade do seu tamagushi: '))
+                idade = int(input('\nInsira a idade do seu tamagushi: '))
 
                 if idade not in idade_valida:
                     print('\033[1;31mPor favor coloque uma idade entre 0 a 100!\n'
@@ -216,10 +219,40 @@ if __name__ == '__main__':
 
     meu_tamagushi = Tamagushi(nome, fome, saude, idade)
 
-    meu_tamagushi.alterar_nome()
-    meu_tamagushi.alterar_fome()
-    meu_tamagushi.alterar_saude()
-    meu_tamagushi.alterar_idade()
-    
-    
+    # fazer o menu
+    while True:
+        print('\n-----Menu-----')
+        opcoes = [1, 2, 3, 4 , 5, 6]
 
+        opcao = int(input('\n[1] Alterar_nome\n'
+                      '[2] Alterar fome\n'
+                      '[3] Alterar saúde\n'
+                      '[4] Alterar idade\n'
+                      '[5] Ver dados\n'
+                      '[6] sair\n\n'
+                      'Qual opção deseja? '))
+        
+        if opcao not in opcoes:
+            print('\n\033[1;31mPor favor insira uma opção válida!\033[m')
+        
+        else:
+            if opcao == 1:
+                meu_tamagushi.alterar_nome()
+
+            elif opcao == 2:
+                meu_tamagushi.alterar_fome()
+
+            elif opcao == 3:
+                meu_tamagushi.alterar_saude()
+            
+            elif opcao == 4:
+                meu_tamagushi.alterar_idade()
+
+            elif opcao == 5:
+                meu_tamagushi.ver_dados()
+            
+            elif opcao == 6:
+                break
+    
+    print('Obrigado e volte sempre! 🥰')
+  
