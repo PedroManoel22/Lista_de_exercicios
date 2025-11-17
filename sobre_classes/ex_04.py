@@ -9,7 +9,7 @@ class Pessoa:
     def __init__(self, nome, idade, peso, altura):
         self.nome = nome
         self._idade = idade
-        self.peso = peso
+        self._peso = peso
         self._altura = altura
 
 
@@ -31,6 +31,16 @@ class Pessoa:
     @altura.setter
     def altura(self):
         self._altura
+
+    
+    @property
+    def peso(self):
+        return self._peso
+
+
+    @peso.setter
+    def peso(self):
+        self._peso
     
 
     def envelhecer(self):
@@ -41,21 +51,27 @@ class Pessoa:
             self.crescer(0.5)
         
     
-    # def engordar(self):
-    #     ...
+    def engordar(self):
+        self._peso += 1
+        print(f'\n{self.nome} engordou mais 1KG')
+        print(f'E agora está com {self._peso:.2f}KG')
     
 
-    # def emagrecer(self):
-    #     ...
+    def emagrecer(self):
+        self._peso -= 1
+        print(f'\n{self.nome} emagreceu  1KG')
+        print(f'E agora está com {self._peso:.2f}KG')
 
     
     def crescer(self, aumenta = 0.2):
         self._altura += aumenta
 
         print(f'\n{self.nome} cresceu mais {aumenta}cm')
-        print(f'\nAgora {self.nome} tem {self._altura}m')
+        print(f'Agora {self.nome} tem {self._altura}m')
 
 
 pessoa1 = Pessoa('Pedro', 21, 73, 1.73)
 pessoa1.envelhecer()
 pessoa1.crescer()
+pessoa1.engordar()
+pessoa1.emagrecer()
