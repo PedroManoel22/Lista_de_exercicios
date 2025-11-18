@@ -28,11 +28,57 @@ class Tamagushi:
 
     def alterar_saude(self):
         self.saude = pede_valida_saude(alterar=True, saude_antiga=self.saude)
-        print('\n033[1;32mSaúde alterada com sucesso!\033[m')
+
+        if self.saude == 0:
+            return 'morto'
+        
+        else:
+            print('\n\033[1;32mSaúde alterada com sucesso!\033[m')
     
 
     def alterar_idade(self):
         self.idade = pede_valida_idade(alterar=True, idade_antiga=self.idade)
+    
+    
+    def ver_humor(self):
+        print('\n----Humor do tamagushi----')
+        # humor:
+        # 0 a 25 = Triste,
+        # 26 a 50 = Normal, 
+        # 51 a 75 = Feliz, 
+        # 76 a 100 = Muito feliz
+
+        humor_possiveis = ['Triste', 'Normal', 'Feliz', 'Muito feliz']
+
+        if self.saude == 0:
+            print('\nSeu tamagushi não tem humor pois está morto')
+
+        else:
+            humor = self.saude - self.fome
+            
+            # Triste
+            if humor >= 0 and humor <= 25:
+                humor = humor_possiveis[0]
+            
+            # Normal
+            elif humor >= 26 and humor <= 50:
+                humor = humor_possiveis[1]
+            
+            # Feliz
+            elif humor >= 51 and humor <= 75:
+                humor = humor_possiveis[2]
+
+            # Muito feliz
+            elif humor >= 76 and humor <= 100:
+                humor = humor_possiveis[3]
+        
+        print(f'\nSeu tamagushi está {humor}')
+            
+
+
+
+            
+        
     
     def ver_dados(self):
         print('\n---Dados do tamagushi---\n')
@@ -219,40 +265,52 @@ if __name__ == '__main__':
 
     meu_tamagushi = Tamagushi(nome, fome, saude, idade)
 
-    # fazer o menu
-    while True:
-        print('\n-----Menu-----')
-        opcoes = [1, 2, 3, 4 , 5, 6]
-
-        opcao = int(input('\n[1] Alterar_nome\n'
-                      '[2] Alterar fome\n'
-                      '[3] Alterar saúde\n'
-                      '[4] Alterar idade\n'
-                      '[5] Ver dados\n'
-                      '[6] sair\n\n'
-                      'Qual opção deseja? '))
-        
-        if opcao not in opcoes:
-            print('\n\033[1;31mPor favor insira uma opção válida!\033[m')
-        
-        else:
-            if opcao == 1:
-                meu_tamagushi.alterar_nome()
-
-            elif opcao == 2:
-                meu_tamagushi.alterar_fome()
-
-            elif opcao == 3:
-                meu_tamagushi.alterar_saude()
-            
-            elif opcao == 4:
-                meu_tamagushi.alterar_idade()
-
-            elif opcao == 5:
-                meu_tamagushi.ver_dados()
-            
-            elif opcao == 6:
-                break
+    if saude == 0:
+        print('\nO seu tamagushi está morto 😥')
     
-    print('Obrigado e volte sempre! 🥰')
+    else:
+
+        # fazer o menu
+        while True:
+            print('\n-----Menu-----')
+            opcoes = [1, 2, 3, 4 , 5, 6, 7]
+
+            opcao = int(input('\n[1] Alterar_nome\n'
+                        '[2] Alterar fome\n'
+                        '[3] Alterar saúde\n'
+                        '[4] Alterar idade\n'
+                        '[5] Ver dados\n'
+                        '[6] Ver humor\n'
+                        '[7] sair\n\n'
+                        'Qual opção deseja? '))
+            
+            if opcao not in opcoes:
+                print('\n\033[1;31mPor favor insira uma opção válida!\033[m')
+            
+            else:
+                if opcao == 1:
+                    meu_tamagushi.alterar_nome()
+
+                elif opcao == 2:
+                    meu_tamagushi.alterar_fome()
+
+                elif opcao == 3:
+                    saude = meu_tamagushi.alterar_saude()
+                    if saude == 'morto':
+                        print('\nO seu tamagushi morreu 😥')
+                        break
+
+                elif opcao == 4:
+                    meu_tamagushi.alterar_idade()
+
+                elif opcao == 5:
+                    meu_tamagushi.ver_dados()
+                
+                elif opcao == 6:
+                    meu_tamagushi.ver_humor()
+                    
+                elif opcao == 7:
+                    break
+    
+    print('\nObrigado e volte sempre! 🥰')
   
