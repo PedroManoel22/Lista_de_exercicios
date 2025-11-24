@@ -1,27 +1,44 @@
 # Desenvolva uma classe Macaco, que possua os atributos nome e bucho (estomago) e pelo menos os métodos comer(), ver_bucho() e digerir().
 # Faça um programa ou teste interativamente, criando pelo menos dois macacos, alimentando-os com pelo menos 3 alimentos diferentes e verificando 
-# o conteúdo do estomago a cada refeição. Experimente fazer com que um macaco coma o outro. É possível criar um macaco canibal?
-
+# o conteúdo do estomago a cada refeição.
 class Macaco:
     def __init__ (self, nome, bucho=[]):
         self.nome = nome
         self.bucho = bucho
     
 
-    def comer(self):
-        alimento = input('Qual alimento o macaco vai comer? ')
-        self.bucho.append(alimento)
-        print(self.bucho)
+  
+    def digerir(self):
+        while True:
+            alimento = input(f'\nQual alimento o macaco {self.nome} irá digerir? ')
+            if alimento not in self.bucho:
+                print('\n\033[1;31mPor favor coloque um alimento que esteja no bucho do macaco\033[m')
+            
+            else:
+                self.bucho.remove(alimento)
+                print(f'\n\033[1;32m{alimento} digerido com sucesso!\033[m')
+                break
+            
 
-    
+
     def ver_bucho(self):
-        if self.bucho == 0:
-            print(f'\nO bucho do macaco {self.nome} está vazio!')
+        if not self.bucho:
+            print(f'\nO bucho do macaco {self.nome} está vazio!\n')
         
         else:
             print(f'\nNo bucho do macaco {self.nome} tem:\n')
             for comida in self.bucho:
                 print(comida)
+            print()
+
+    
+    def comer(self):
+        alimento = input('Qual alimento o macaco vai comer? ')
+        self.bucho.append(alimento)
+        print(f'\n\033[1;32mMacaco {self.nome} comeu {alimento}\033[m')
+        self.ver_bucho()
+
+    
 
 
 
@@ -67,5 +84,37 @@ if __name__ == '__main__':
     nome = pede_nome()
     bucho =  pede_bucho(nome)
     macaco1 = Macaco(nome, bucho)
-    macaco1.ver_bucho()
-    macaco1.comer()
+    # menu
+    while True:
+        opcoes = [1, 2, 3, 4]
+        print('----Menu----\n')
+        try:
+            opcao = int(input('[1] Digerir\n'
+                '[2] Comer\n'
+                '[3] Ver bucho\n'
+                '[4] Sair\n\n'
+                'O que deseja? '))
+            
+            if opcao not in opcoes:
+                print('\033[m\nPor favor coloque um opção válida!\n')
+            
+            else:
+                if opcao == 1:
+                    macaco1.digerir()
+                
+                elif opcao == 2:
+                    macaco1.comer()
+                
+                elif opcao == 3:
+                    macaco1.ver_bucho()
+                
+                else:
+                    break
+        
+        except ValueError:
+            print('\nPor favor coloque um número inteiro!\n')
+        
+        except Exception as e:
+            print(f'\nErro inesperado: {e.__class__.__name__}')
+    
+    print('\nObrigado e volte sempre!')
