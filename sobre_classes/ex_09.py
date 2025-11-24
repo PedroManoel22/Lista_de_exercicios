@@ -23,7 +23,7 @@ class Retangulo:
 def mostrar_valores_pontos(pontos: Ponto):
     x = pontos.x
     y = pontos.y
-    print(f'\nCentro do retângulo: {x} X {y}\n')
+    print(f'\nCentro do retângulo:\n')
     print(f'X = {x}\n'
           f'Y = {y}')
 
