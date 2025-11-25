@@ -1,10 +1,3 @@
-# Crie uma classe que modele um Tamagushi (Bichinho Eletrônico):
-
-# Atributos: Nome, Fome, Saúde e Idade b.
-# Métodos: Alterar Nome, Fome, Saúde e Idade; Retornar Nome, Fome, Saúde e Idade
-# Obs: Existe mais uma informação que devemos levar em consideração, o Humor do nosso tamagushi, este humor é uma combinação entre os atributos Fome e Saúde,
-# ou seja, um campo calculado, então não devemos criar um atributo para armazenar esta informação por que ela pode ser calculada a qualquer momento.
-# 100 anos será a idade maxima do nosso tamagushi
 
 class Tamagushi:
     def __init__(self, nome, fome, saude, idade):
@@ -274,11 +267,11 @@ if __name__ == '__main__':
                         '[2] Alterar fome\n'
                         '[3] Alterar saúde\n'
                         '[4] Alterar idade\n'
-                        '[5] Ver dados\n'
-                        '[6] Ver humor\n'
-                        '[7] sair\n\n'
+                        '[5] Ver humor\n'
+                        '[6] sair\n\n'
                         'Qual opção deseja? '))
             
+        
             match opcao:
                 case 1:
                     meu_tamagushi.alterar_nome()
@@ -288,7 +281,6 @@ if __name__ == '__main__':
 
                 case 3:
                     saude = meu_tamagushi.alterar_saude()
-                        
                     if saude == 'morto':
                         print('\nO seu tamagushi morreu 😥')
                         break
@@ -296,17 +288,17 @@ if __name__ == '__main__':
                 case 4:
                     meu_tamagushi.alterar_idade()
 
-                case 5:
+                case 7:
                     meu_tamagushi.ver_dados()
                     
-                case 6:
+                case 5:
                     meu_tamagushi.ver_humor()
                         
-                case 7:
+                case  6:
                     break
-                    
+
                 case _:
                     print('\n\033[1;31mPor favor insira uma opção válida!\033[m')
-    
+        
     print('\nObrigado e volte sempre! 🥰')
   
