@@ -37,9 +37,9 @@ def ler_arquivo():
 
 OCTETO_VALIDO = r'(?:25[0-5]|2[0-4]\d|1\d{2}|\d{1,2})'
 
-def validar_ipv4_corrigido(ip_string):
-    validos = []
-    invalidos = []
+def validar_ipv4_corrigido(ip_string: str):
+    validos: list[str] = []
+    invalidos: list[str] = []
 
     padrao = re.compile(
     r'^' +
@@ -62,7 +62,7 @@ def validar_ipv4_corrigido(ip_string):
     return escrever_arquivo(validos, invalidos)
 
 
-def escrever_arquivo(validos, invalidos):
+def escrever_arquivo(validos: list[str], invalidos: list[str]):
     caminho_arquivo = 'Lista_de_exercicios/sobre_arquivos/ex_01/ex_01/enderecos_IP_validos.txt'
     with open(caminho_arquivo, 'w', encoding='utf-8') as arquivo:
         arquivo.write('[Endereços válidos:]\n')
@@ -76,5 +76,5 @@ def escrever_arquivo(validos, invalidos):
             arquivo.writelines(f'{invalido}\n')
 
 if __name__ == '__main__':
-    enderecos = ler_arquivo()
-    validar_ipv4_corrigido(enderecos)
+    enderecos: list[str] = ler_arquivo()
+    validar_ipv4_corrigido(enderecos) # type: ignore
