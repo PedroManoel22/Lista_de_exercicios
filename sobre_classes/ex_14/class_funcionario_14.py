@@ -8,7 +8,7 @@
 class Funcionario:
     def __init__(self, nome: str, salario: float):
         self.nome = nome
-        self.salario = salario
+        self.salario: float = salario
     
     def mostra_nome(self):
         print(self.nome)
@@ -17,7 +17,7 @@ class Funcionario:
     def mostra_salario(self):
         print(f'R${self.salario}')
     
-    def aumentar_salario(self, taxa):
+    def aumentar_salario(self, taxa: float):
         self.salario += self.salario * (taxa / 100)
         print(f'\nO salário de {self.nome} foi para {self.salario} ')
        
