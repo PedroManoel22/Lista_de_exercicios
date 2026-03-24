@@ -5,7 +5,7 @@
 # Métodos: Mudar valor do Lado, Retornar valor do Lado e calcular Área;
 
 class Quadrado:
-    def __init__(self, lado):
+    def __init__(self, lado: float):
         self._lado = lado
     
     @property
@@ -14,7 +14,7 @@ class Quadrado:
     
 
     @lado.setter
-    def lado(self, valor):
+    def lado(self, valor: float):
         self._lado = valor
     
 
