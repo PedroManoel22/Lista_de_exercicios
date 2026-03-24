@@ -28,9 +28,9 @@
 
 
 
-def ler_arquivo():
-    nome_arquivo = "lista_de_exercicios/Lista_de_exercicios/sobre_listas/ex_23/usuarios.txt"
-    dados_usuarios = {}
+def ler_arquivo() -> dict[str, str]:
+    nome_arquivo = "Lista_de_exercicios/sobre_arquivos/ex_01/ex_01/usuarios.txt"
+    dados_usuarios: dict[str, str] = {}
 
     try:
         with open(nome_arquivo, 'r', encoding='utf-8') as arquivo:
@@ -52,9 +52,9 @@ def ler_arquivo():
     return dados_usuarios
 
 
-def gerar_relatorio(dados_usuarios):
+def gerar_relatorio(dados_usuarios: dict[str, str]):
 
-    endereco_arquivo = "lista_de_exercicios/Lista_de_exercicios/sobre_listas/ex_23/relatório.txt"
+    endereco_arquivo = "Lista_de_exercicios/sobre_arquivos/ex_01/ex_01/relatório.txt"
 
     cabecalho = """
 ACME Inc.               Uso do espaço em disco pelos usuários
@@ -107,5 +107,8 @@ Nr.  Usuário        Espaço utilizado     % do uso
 
 
 if __name__ == '__main__':
+    ...
+    oi = ler_arquivo()
+    print(oi)
 
-    gerar_relatorio(ler_arquivo())
+    # gerar_relatorio(ler_arquivo())
