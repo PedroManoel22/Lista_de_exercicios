@@ -11,7 +11,7 @@
 
 
 class Retangulo:
-    def __init__(self, comprimento, largura):
+    def __init__(self, comprimento: float, largura: float):
         self._comprimento = comprimento
         self._largura = largura
 
@@ -21,8 +21,8 @@ class Retangulo:
     
 
     @mudar_valor_dos_lados.setter
-    def mudar_valor_dos_lados(self, novos_valores):
-        comprimento_antigo = self._comprimento
+    def mudar_valor_dos_lados(self, novos_valores: tuple[float, float]):
+        comprimento_antigo  = self._comprimento
         largura_antigo = self._largura
         comprimento, largura = novos_valores
         self._comprimento = comprimento
@@ -71,6 +71,8 @@ if __name__ == '__main__':
     
     comprimento, largura = pede_comprimento_largura()
     molde = Retangulo(comprimento, largura)
+
+    opcao: str | int = 0
 
     # menu
     while True:
