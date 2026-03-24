@@ -4,7 +4,7 @@
 # Métodos: troca_cor e mostra_cor
 
 class Bola:
-    def __init__(self, cor, circunferencia, material):
+    def __init__(self, cor: str, circunferencia: str, material: str):
         self._cor = cor
         self.circunferencia = circunferencia
         self.material = material
@@ -14,7 +14,7 @@ class Bola:
         return self._cor
     
     @cor.setter
-    def cor(self, nova_cor):
+    def cor(self, nova_cor: str):
         self._cor = nova_cor
         print('A bola mudou de cor!')
         
