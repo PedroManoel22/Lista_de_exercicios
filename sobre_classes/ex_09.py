@@ -11,12 +11,12 @@
 # Crie um menu para alterar os valores do retângulo e imprimir o centro deste retângulo.
 
 class Ponto:
-    def __init__(self, x, y):
+    def __init__(self, x: float, y: float):
         self.x = x
         self.y = y
         
 class Retangulo:
-    def __init__(self, largura, altura):
+    def __init__(self, largura: float, altura: float):
         self.largura = largura
         self.altura = altura
 
@@ -31,8 +31,8 @@ def mostrar_valores_pontos(pontos: Ponto):
 def encontrar_centro(retangulo: Retangulo):
     largura = retangulo.largura
     altura = retangulo.altura
-    meio_x = largura / 2
-    meio_y = altura / 2
+    meio_x: float = largura / 2
+    meio_y: float = altura / 2
     return Ponto(meio_x, meio_y)
 
 def pede_valida_retangulo():
