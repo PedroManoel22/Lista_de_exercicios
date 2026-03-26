@@ -2,13 +2,13 @@
 # Faça um programa ou teste interativamente, criando pelo menos dois macacos, alimentando-os com pelo menos 3 alimentos diferentes e verificando 
 # o conteúdo do estomago a cada refeição.
 class Macaco:
-    def __init__ (self, nome, bucho=[]):
+    def __init__ (self, nome: str , bucho: list[str] = []):
         self.nome = nome
         self.bucho = bucho
     
 
   
-    def digerir(self):
+    def digerir(self) -> None:
         while True:
             alimento = input(f'\nQual alimento o macaco {self.nome} irá digerir? ')
             if alimento not in self.bucho:
@@ -21,7 +21,7 @@ class Macaco:
             
 
 
-    def ver_bucho(self):
+    def ver_bucho(self) -> None:
         if not self.bucho:
             print(f'\nO bucho do macaco {self.nome} está vazio!\n')
         
@@ -32,7 +32,7 @@ class Macaco:
             print()
 
     
-    def comer(self):
+    def comer(self) -> None:
         alimento = input('Qual alimento o macaco vai comer? ')
         self.bucho.append(alimento)
         print(f'\n\033[1;32mMacaco {self.nome} comeu {alimento}\033[m')
@@ -42,7 +42,7 @@ class Macaco:
 
 
 
-def pede_nome():
+def pede_nome() -> str:
     while True:
         nome = input('Insira o nome do macaco: ')
 
@@ -55,8 +55,8 @@ def pede_nome():
         else:
             return nome
 
-def pede_bucho(nome):
-    alimentos  = []
+def pede_bucho(nome: str) -> list[str]:
+    alimentos: list[str]  = []
     while True:
         comeu = input(f'O macaco chamado {nome} comeu alguma coisa (S/N)? ').upper().strip()
 
@@ -77,8 +77,7 @@ def pede_bucho(nome):
 
 
         elif comeu == 'N':
-            bucho = []
-            return bucho
+            return alimentos
 
 if __name__ == '__main__':
     nome = pede_nome()
