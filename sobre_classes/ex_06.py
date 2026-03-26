@@ -5,7 +5,7 @@ class Televisao:
     NUM_CANAIS = 10
     canais = [x for x in range(1, NUM_CANAIS)]
     print(canais)
-    def __init__(self, num_canal = 1):
+    def __init__(self, num_canal: int = 1):
         self.num_canal = num_canal
         self.volume = 1
         if self.num_canal not in self.canais:
@@ -24,7 +24,7 @@ class Televisao:
 
     def diminuir_volume(self):
         limite = 0
-        if self.volume > 0:
+        if self.volume > limite:
             print('Volume da tv foi diminuido!')
             self.volume -= 1
             print(f'Agora o volume da tv está em {self.volume}')
