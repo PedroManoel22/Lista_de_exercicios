@@ -7,7 +7,7 @@
 # 100 anos será a idade maxima do nosso tamagushi
 
 class Tamagushi:
-    def __init__(self, nome, fome, saude, idade):
+    def __init__(self, nome: str, fome: int, saude: int, idade: int):
         self.nome = nome
         self.fome = fome
         self.saude = saude
@@ -49,6 +49,7 @@ class Tamagushi:
         # 76 a 100 = Muito feliz
 
         humor_possiveis = ['Triste', 'Normal', 'Feliz', 'Muito feliz']
+        humor = 0
 
         if self.saude == 0:
             print('\nSeu tamagushi não tem humor pois está morto')
@@ -83,7 +84,7 @@ class Tamagushi:
               f'Idade: {self.idade}\n')
     
 
-def pede_valida_nome(alterar=False, nome_antigo='nenhum'):
+def pede_valida_nome(alterar: bool = False, nome_antigo: str ='nenhum'):
     if not alterar:
         # pede o nome a primeira vez
         while True:
@@ -126,7 +127,7 @@ def pede_valida_nome(alterar=False, nome_antigo='nenhum'):
                 return nome
             
          
-def pede_valida_fome(alterar=False, fome_antiga=0):
+def pede_valida_fome(alterar: bool = False, fome_antiga: int = 0):
     fome_valida = [x for x in range(0, 101)]
 
     if not alterar:
@@ -167,7 +168,7 @@ def pede_valida_fome(alterar=False, fome_antiga=0):
                 print('\n\033[1;31mPor favor insira um valor inteiro!\n\033[m')
 
 
-def pede_valida_saude(alterar=False, saude_antiga=0):
+def pede_valida_saude(alterar: bool = False, saude_antiga: int = 0):
     saude_valida = [x for x in range(0, 101)]
 
     # Pede a saúde a primeira vez
@@ -208,7 +209,7 @@ def pede_valida_saude(alterar=False, saude_antiga=0):
                     print('\n\033[1;31mPor favor insira um valor inteiro!\n\033[m')
 
 
-def pede_valida_idade(alterar=False, idade_antiga=0):
+def pede_valida_idade(alterar: bool = False, idade_antiga: int = 0):
     idade_valida = [x for x in range(0, 101)]
 
     # pede idade primeira vez
