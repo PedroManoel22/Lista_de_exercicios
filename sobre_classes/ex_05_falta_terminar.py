@@ -10,7 +10,7 @@ class ContaCorrente:
     padrao_num_conta = re.compile(r'\d{8}-\d{2}')
     padrao_nome = re.compile(r"^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]+$", re.UNICODE)
 
-    def __init__(self, num_conta, nome_correntista, saldo=0):
+    def __init__(self, num_conta: str, nome_correntista: str, saldo: float = 0):
         valido = self.padrao_num_conta.findall(num_conta)
 
         # valida num_conta
@@ -51,7 +51,7 @@ def criar_conta():
             print('\033[1;32mTodos os dados estão válidos!')
         
         except ValueError as e:
-             print('Erro de validação. Tente novamente. Detalhe: {e}')
+             print(f'Erro de validação. Tente novamente. Detalhe: {e}')
     
     return conta
 
