@@ -6,7 +6,7 @@
 
 
 class Pessoa:
-    def __init__(self, nome, idade, peso, altura):
+    def __init__(self, nome: str, idade: int, peso: float, altura: float):
         self.nome = nome
         self._idade = idade
         self._peso = peso
@@ -63,7 +63,7 @@ class Pessoa:
         print(f'E agora está com {self._peso:.2f}KG')
 
     
-    def crescer(self, aumenta = 0.2):
+    def crescer(self, aumenta: float = 0.2) -> None:
         self._altura += aumenta
 
         print(f'\n{self.nome} cresceu mais {aumenta}cm')
