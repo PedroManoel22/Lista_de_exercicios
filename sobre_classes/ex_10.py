@@ -16,13 +16,13 @@
 # OBS: Sempre que acontecer um abastecimento é necessário atualizar a quantidade de combustível total na bomba
 
 class BombaCombustivel:
-    def __init__(self, tipo_combustivel, valor_litro, quantidade_combustivel):
+    def __init__(self, tipo_combustivel: str, valor_litro: float, quantidade_combustivel: float):
         self.tipo_combustivel = tipo_combustivel
-        self.valor_litro = valor_litro
+        self.valor_litro= valor_litro
         self.quantidade_combustivel = quantidade_combustivel
     
 
-    def abastecer_por_valor(self, valor):
+    def abastecer_por_valor(self, valor: float):
         quantidade_litro = round(valor / self.valor_litro, 2)
         print(f'\nVocê abasteceu R${valor} que deu {quantidade_litro} litros\n')
         self.alterar_quantidade_combustivel(quantidade_litro)
