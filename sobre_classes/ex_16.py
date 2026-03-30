@@ -1,25 +1,25 @@
 
 class Tamagushi:
-    def __init__(self, nome, fome, saude, idade):
+    def __init__(self, nome: str, fome: int, saude: int, idade: int):
         self.nome = nome
         self.fome = fome
         self.saude = saude
         self.idade = idade
     
 
-    def alterar_nome(self):
+    def alterar_nome(self) -> None:
         self.nome = pede_valida_nome(alterar=True, nome_antigo=self.nome)
         
         print('\n\033[1;32mNome alterado com sucesso!\n\033[m')
     
 
-    def alterar_fome(self):
+    def alterar_fome(self) -> None:
         self.fome = pede_valida_fome(alterar=True, fome_antiga=self.fome)
 
         print('\n\033[1;32mFome alterada com sucesso!\033[m')
     
 
-    def alterar_saude(self):
+    def alterar_saude(self) -> str | None:
         self.saude = pede_valida_saude(alterar=True, saude_antiga=self.saude)
 
         if self.saude == 0:
@@ -29,17 +29,19 @@ class Tamagushi:
             print('\n\033[1;32mSaúde alterada com sucesso!\033[m')
     
 
-    def alterar_idade(self):
+    def alterar_idade(self) -> None:
         self.idade = pede_valida_idade(alterar=True, idade_antiga=self.idade)
     
     
-    def ver_humor(self):
+    def ver_humor(self) -> None:
         print('\n----Humor do tamagushi----')
         # humor:
         # 0 a 25 = Triste,
         # 26 a 50 = Normal, 
         # 51 a 75 = Feliz, 
         # 76 a 100 = Muito feliz
+
+        humor = "desconhecido"
 
         humor_possiveis = ['Triste', 'Normal', 'Feliz', 'Muito feliz']
 
@@ -68,7 +70,7 @@ class Tamagushi:
         print(f'\nSeu tamagushi está {humor}')
             
 
-    def ver_dados(self):
+    def ver_dados(self) -> None:
         print('\n---Dados do tamagushi---\n')
         print(f'Nome: {self.nome}\n'
               f'Fome: {self.fome}\n'
@@ -76,7 +78,7 @@ class Tamagushi:
               f'Idade: {self.idade}\n')
     
 
-def pede_valida_nome(alterar=False, nome_antigo='nenhum'):
+def pede_valida_nome(alterar: bool = False, nome_antigo: str ='nenhum') -> str:
     if not alterar:
         # pede o nome a primeira vez
         while True:
@@ -119,7 +121,7 @@ def pede_valida_nome(alterar=False, nome_antigo='nenhum'):
                 return nome
             
          
-def pede_valida_fome(alterar=False, fome_antiga=0):
+def pede_valida_fome(alterar: bool = False, fome_antiga: float = 0) -> int:
     fome_valida = [x for x in range(0, 101)]
 
     if not alterar:
@@ -160,7 +162,7 @@ def pede_valida_fome(alterar=False, fome_antiga=0):
                 print('\n\033[1;31mPor favor insira um valor inteiro!\n\033[m')
 
 
-def pede_valida_saude(alterar=False, saude_antiga=0):
+def pede_valida_saude(alterar: bool = False, saude_antiga: int = 0) -> int:
     saude_valida = [x for x in range(0, 101)]
 
     # Pede a saúde a primeira vez
@@ -201,7 +203,7 @@ def pede_valida_saude(alterar=False, saude_antiga=0):
                     print('\n\033[1;31mPor favor insira um valor inteiro!\n\033[m')
 
 
-def pede_valida_idade(alterar=False, idade_antiga=0):
+def pede_valida_idade(alterar: bool = False, idade_antiga: int = 0) -> int: 
     idade_valida = [x for x in range(0, 101)]
 
     # pede idade primeira vez
