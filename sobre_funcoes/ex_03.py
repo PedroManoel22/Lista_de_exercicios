@@ -2,10 +2,10 @@
 # Plus: só receba numeros inteiros
 
 
-def coleta_numeros():
+def coleta_numeros() -> list[int]:
     loop = 0
     QTD = 3
-    numeros = []
+    numeros: list[int] = []
     while True:
         try:
             x = input('Insira um número: ')
@@ -25,7 +25,7 @@ def coleta_numeros():
     return numeros
 
 
-def soma(x, y, z):
+def soma(x: int, y: int, z: int) -> str:
     soma = x + y + z
     
     return f'A soma entre {x} + {y} + {z} = {soma}'
