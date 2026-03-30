@@ -8,7 +8,7 @@
 # Quando houver atraso, cobrar 3% de multa, mais 0,1% de juros por dia de atraso.
 
 # Valor da prestação
-def valor_prestacao():
+def valor_prestacao() -> float:
     while True:
         try:    
             valor_prestacao = input('Insira o valor da prestação (0 para cancelar): ')
@@ -19,30 +19,30 @@ def valor_prestacao():
             print(f'\033[1;31mPor favor insira um valor int ou float\033[m')
         
         except Exception as e:
-            print(f'Erro inesperado: {e.__name__}')
+            print(f'Erro inesperado: {type(e).__name__}')
 
     return valor_prestacao_float
 
 
 # Número de dias em atraso
-def numero_dias_atraso():
+def numero_dias_atraso() -> int:
     while True:
         try:
             num_dias_atraso = input('Insira o números de dias em atraso: ')
-            num_dias_atraso_float = round(float(num_dias_atraso), 2)
+            num_dias_atraso_float = round(int(num_dias_atraso), 2)
             break
 
         except ValueError:
             print(f'\033[1;31mPor favor insira um valor do tipo float oi int\033[m')
         
         except Exception as e:
-            print(f'Erro inesperado: {e.__name__}')
+            print(f'Erro inesperado: {type(e).__name__}')
 
     return num_dias_atraso_float
 
 
 
-def valor_pagamento(prestacao, dias_atraso):
+def valor_pagamento(prestacao: float, dias_atraso: int):
     if dias_atraso == 0:
         valor_final = prestacao
 
@@ -55,6 +55,7 @@ def valor_pagamento(prestacao, dias_atraso):
 
 
 if __name__ == '__main__':
+
     while True:
         prestacao = valor_prestacao()
         if prestacao == 0:
