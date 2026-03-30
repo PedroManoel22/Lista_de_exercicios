@@ -28,13 +28,13 @@ class BombaCombustivel:
         self.alterar_quantidade_combustivel(quantidade_litro)
         
     
-    def abastecer_por_litro(self, litros):
+    def abastecer_por_litro(self, litros: float):
         valor_final = round(litros * self.valor_litro, 2)
         print(f'\nVocê abasteceu {litros} litros que deu R${valor_final}\n')
         self.alterar_quantidade_combustivel(litros)
 
 
-    def alterar_valor(self, novo_valor):
+    def alterar_valor(self, novo_valor: float):
         self.valor_litro = novo_valor
     
 
@@ -52,7 +52,7 @@ class BombaCombustivel:
         print(f'\n\033[1;32mCombustível alterado para {self.tipo_combustivel}\033[m\n')
         
 
-    def alterar_quantidade_combustivel(self, qtd_litros):
+    def alterar_quantidade_combustivel(self, qtd_litros: float):
         print(f'\nAntes tinhamos {self.quantidade_combustivel:.2f} litros')
         self.quantidade_combustivel -= qtd_litros
         print(f'Agora temos {self.quantidade_combustivel:.2f} litros')
@@ -181,7 +181,7 @@ if __name__ == '__main__':
                         try:
                             valor = float(input('Para quantos reais você quer alterar o valor do combustível: '))
                             valor = round(valor, 2)
-                            bomba1.alterar_valor()
+                            bomba1.alterar_valor(valor)
                         
                         except ValueError:
                             print('\n\033[1;31mPor favor coloque um valor válido!\n\033[m')
