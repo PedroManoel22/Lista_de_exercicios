@@ -7,7 +7,7 @@
 # Assim, a função para efetuar as conversões terá um parâmetro formal para registrar se é A.M. ou P.M. 
 # Inclua um loop que permita que o usuário repita esse cálculo para novos valores de entrada todas às vezes que desejar.
 
-def entrada():
+def entrada() -> None:
     while True:
         # valida hora
         try:
@@ -58,7 +58,7 @@ def entrada():
 
    
 
-def saida(hora, conversao, minutos):
+def saida(hora: int, conversao: str, minutos: int) -> None:
     print(f'antes: {hora}:{minutos}')
 
     if conversao == 'A':
