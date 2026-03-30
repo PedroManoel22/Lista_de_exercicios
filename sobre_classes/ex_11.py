@@ -14,16 +14,17 @@
 # meu_fusca.obter_gasolina()         # Imprime o combustível que resta no tanque.
 
 class Carro:
-    def __init__(self, kms_litro, nivel_combustivel=0):
+    kms_litro: float
+    nivel_combustivel: float
+    
+    def __init__(self, kms_litro: float, nivel_combustivel: float = 0):
         self.kms_litro = kms_litro
         self.nivel_combustivel = nivel_combustivel
     
 
-    def andar(self, kms):
-        kms_float = isinstance(kms, (float, int))
+    def andar(self, kms: float):
+        # kms_float = isinstance(kms, (float, int))
         eficiencia_atual = round(self.nivel_combustivel * self.kms_litro, 2)
-        if not kms_float:
-            raise TypeError('\nPor favor coloque uma distância válida!')
 
         if kms > eficiencia_atual:
             print(f'\nSeu carro não consegue andar por {kms} Km, pois no tangue só tem {self.nivel_combustivel}'
@@ -38,7 +39,7 @@ class Carro:
         print(f'Seu carro está com {self.nivel_combustivel} litros de gasolina')
 
     
-    def adicionar_gasolina(self, litros):
+    def adicionar_gasolina(self, litros: float):
          self.nivel_combustivel += litros
         
 
