@@ -7,12 +7,13 @@
 
 
 class ContaBancaria():
-    def __init__(self, saldo):
+    saldo: float
+    def __init__(self, saldo: float):
         self.saldo = saldo
 
 class ContaInvestimento(ContaBancaria):
 
-    def __init__(self, saldo, taxa):
+    def __init__(self, saldo: float, taxa: float):
         super().__init__(saldo)
         self.taxa = taxa
 
@@ -26,5 +27,4 @@ conta_investimento.adicone_juros()
 conta_investimento.adicone_juros()
 conta_investimento.adicone_juros()
 conta_investimento.adicone_juros()
-saldo = conta_investimento.saldo
-print(saldo)
+print(conta_investimento.saldo)
