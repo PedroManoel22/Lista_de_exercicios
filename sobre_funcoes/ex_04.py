@@ -1,7 +1,7 @@
 # Faça um programa, com uma função que necessite de um argumento. A função retorna o valor de caractere P, se seu argumento 
 # for positivo, e N, se seu argumento for zero ou negativo.
 
-def valida_numero():
+def valida_numero() -> str:
     while True:
         try:
             x = input('Insira um número inteiro: ')
@@ -15,7 +15,7 @@ def valida_numero():
             print(f'Erro inesperado! {e}')
 
 
-def positivo_negativo(x):
+def positivo_negativo(x: int) -> str:
     if x > 0:
         return 'P'
     else:
