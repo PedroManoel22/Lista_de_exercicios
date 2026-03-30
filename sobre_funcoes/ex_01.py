@@ -7,14 +7,14 @@
 # n   n   n   n   n   n  ... n
 # para um n informado pelo usuário. Use uma função que receba um valor n inteiro e imprima até a n-ésima linha.
 
-def imprimir():
+def imprimir() -> None:
     while True:
         try:
             n = input('Insira um número: ')
             n_int = int(n)
             
             for i in range(1, n_int + 1):
-                for z in range(i):
+                for _ in range(i):
                     print(f'{i} ', end='')
                 print()
                 
