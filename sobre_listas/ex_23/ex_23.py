@@ -29,9 +29,9 @@
 # Nome do arquivo
 
 
-def ler_arquivo():
+def ler_arquivo() -> dict[str, str]:
     nome_arquivo = "lista_de_exercicios/Lista_de_exercicios/sobre_listas/ex_23/usuarios.txt"
-    dados_usuarios = {}
+    dados_usuarios: dict[str, str] = {}
 
     try:
         with open(nome_arquivo, 'r', encoding='utf-8') as arquivo:
@@ -53,7 +53,7 @@ def ler_arquivo():
     return dados_usuarios
 
 
-def gerar_relatorio(dados_usuarios):
+def gerar_relatorio(dados_usuarios: dict[str, str]) -> None:
 
     endereco_arquivo = "lista_de_exercicios/Lista_de_exercicios/sobre_listas/ex_23/relatório.txt"
 
