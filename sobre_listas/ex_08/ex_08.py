@@ -4,13 +4,13 @@
 import json
 
 
-def dados_pessoas(qtd):
+def dados_pessoas(qtd: int) -> list[list[int | float]]:
     
     cont = 1
-    dados = []
+    dados: list[list[int | float]] = []
 
     while True:
-        dado_pessoa = []
+        dado_pessoa: list[int | float] = []
 
         try:
 
@@ -34,7 +34,8 @@ def dados_pessoas(qtd):
     salvar(dados, CAMINHO_ARQUIVO)
     return dados[::-1]
 
-def ler(dados, caminho_arquivo):
+
+def ler(dados: list[list[int | float]], caminho_arquivo: str) -> list[list[int | float]]:
     try:
         with open(caminho_arquivo, 'r', encoding='utf8') as arquivo: # ler o arquivo
             dados = json.load(arquivo)
@@ -45,7 +46,7 @@ def ler(dados, caminho_arquivo):
 
 
 
-def salvar(dados, caminho_arquivo):
+def salvar(dados:  list[list[int | float]], caminho_arquivo: str):
     dado = dados
     with open(caminho_arquivo, 'w', encoding='utf8') as arquivo:
             dado = json.dump(dados,arquivo,indent=2, ensure_ascii=False)
