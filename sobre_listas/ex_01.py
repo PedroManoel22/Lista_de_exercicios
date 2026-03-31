@@ -1,7 +1,7 @@
 # Faça um programa que leia um vetor de 5 números inteiros e mostre-os.
 
 
-def validar_num(x):
+def validar_num(x: int):
 
     while True:
         try:
@@ -13,9 +13,10 @@ def validar_num(x):
         
     return num_int
 
-def coletar_numeros(quantidade):
+def coletar_numeros(quantidade: int) -> list[int]:
 
-    numeros = []
+    numeros: list[int] = []
+
     for i in range(1, quantidade + 1):
         numeros.append(validar_num(i))
     return numeros
