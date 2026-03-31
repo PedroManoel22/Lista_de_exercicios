@@ -2,7 +2,7 @@
 # Esta função deve receber dois parâmetros, linhas e colunas, sendo que o valor por omissão é o valor mínimo igual a 1 e o valor máximo é 20.
 # Se valores fora da faixa forem informados, eles devem ser modificados para valores dentro da faixa de forma elegante.
 
-def recebe_linha_colunas():
+def recebe_valida_linha_colunas() -> tuple[int, int]:
     #Valida o número de linhas
     while True:
         try:
@@ -19,7 +19,7 @@ def recebe_linha_colunas():
             print(f'\033[1;31mPor favor insira um valor do tipo int\033[m')
         
         except Exception as e:
-            print(f'Erro inesperado, {e.__name__}')
+            print(f'Erro inesperado, {type(e).__name__}')
     
 
     #Valida o número de colunas
@@ -38,7 +38,7 @@ def recebe_linha_colunas():
             print(f'\033[1;31mPor favor insira um valor do tipo int\033[m')
         
         except Exception as e:
-            print(f'Erro inesperado, {e.__name__}')
+            print(f'Erro inesperado, {type(e).__name__}')
 
     return linha, coluna
 
@@ -57,7 +57,7 @@ def valida_carcteres():
     return caractere
 
 
-def printar_retangulo(linha, coluna, caractere):
+def printar_retangulo(linha: int, coluna:int, caractere: str) -> None:
     if linha == coluna:
         print('Você me deu dois valores iguais com isso vamos ter um quadrado, por isso irei tirar 1 de linha ')
         linha -= 1
@@ -71,7 +71,7 @@ def printar_retangulo(linha, coluna, caractere):
 
 
 if __name__ == '__main__':
-    linhas_colunas = recebe_linha_colunas()
+    linhas_colunas = recebe_valida_linha_colunas()
     caractere = valida_carcteres()
     printar_retangulo(*linhas_colunas, caractere)
             
