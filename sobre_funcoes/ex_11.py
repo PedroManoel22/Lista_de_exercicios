@@ -4,7 +4,7 @@
 
 from datetime import datetime
 
-def valida_data():
+def valida_data() -> str:
     while True:
         data_str = input("Digite a data no formato dd/mm/aaaa: ")
         
@@ -17,7 +17,7 @@ def valida_data():
 
 
 
-def data_mes_extenso(data:str):
+def data_mes_extenso(data:str) -> str:
     meses = ['Janeiro', 'Fevereiro', 'Maço', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
     data_lista = data.split('/')
     dia = data_lista[0]
