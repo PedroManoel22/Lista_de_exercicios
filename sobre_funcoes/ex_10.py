@@ -7,12 +7,15 @@
 
 from random import randint
 from time import sleep
+from typing import Any
 
-def primeira_jogada():
-    ganhou = [7, 11]
-    perdeu = [2, 3, 12]
-    ponto = [4, 5, 6, 8, 9, 10]
-                
+GANHOU: list[int] = [7, 11]
+PERDEU: list[int] = [2, 3, 12]
+PONTO: list[int] = [4, 5, 6, 8, 9, 10]
+
+def primeira_jogada() -> Any:
+    soma = 0
+
     while True:
         x = input('Aperte enter para jogar os dados: ')
         if x == '': # enter foi apertado
@@ -30,13 +33,13 @@ def primeira_jogada():
                 print(num2)
                 soma = num1 + num2
               
-                if soma in ganhou:
+                if soma in GANHOU:
                     return ganhar()
 
-                elif soma in perdeu:
+                elif soma in PERDEU:
                     return perder()
 
-                if soma in ponto:
+                elif soma in PONTO:
                     x = soma
                     return continuar(x)
 
@@ -45,21 +48,23 @@ def primeira_jogada():
             print('\033[1;31mPor favor aperte enter para jogar\033[m')
 
 
-def ganhar():
+def ganhar() -> None:
     print('\n\033[1;32mNATUTRAL\033[m\n'
           'Parabéns você ganhou!\n'
           'Obrigado por jogar')
 
 
-def perder():
+def perder() -> None:
     print('\n\033[1;31mCRAPS\033[m\n'
           'Você perdeu!\n'
           'Obrigado por jogar')
 
 
-def continuar(num_acertar):
+def continuar(num_acertar: int) -> None:
     print(f'\n\033[1;36mPONTO: {num_acertar}\033[m')
     print('Continue jogando....\n')
+
+    soma: int = 0
 
     while True:
         x = input('\nAperte enter para jogar os dados: ')
