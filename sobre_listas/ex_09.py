@@ -1,9 +1,9 @@
 # Faça um Programa que leia um vetor A com 10 números inteiros, calcule e mostre a soma dos quadrados dos elementos do vetor.
 
-def ler_valida_numeros(qtd):
+def ler_valida_numeros(qtd: int) -> list[int]:
 
     contador = 1
-    numeros = []
+    numeros: list[int] = []
 
     while True:
 
@@ -24,7 +24,7 @@ def ler_valida_numeros(qtd):
 
     return numeros
 
-def soma_quadrado(numeros):
+def soma_quadrado(numeros: list[int]) -> int:
 
     soma = 0
 
@@ -34,6 +34,6 @@ def soma_quadrado(numeros):
 
     return soma
 
-
-print(soma_quadrado(ler_valida_numeros(10)))
+if __name__ == "__main__":
+    print(soma_quadrado(ler_valida_numeros(10)))
         
