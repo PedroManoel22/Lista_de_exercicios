@@ -1,6 +1,6 @@
 # Faça um programa que leia um vetor de 10 números reais e mostre-os na ordem inversa.
 
-def obter_numero_real(ordem):
+def obter_numero_real(ordem: float):
     """
     Solicita um número real ao usuário e valida a entrada.
 
@@ -22,7 +22,7 @@ def obter_numero_real(ordem):
         except ValueError:
             print('\033[1;31mPor favor, insira uma entrada numérica válida.\033[m')
 
-def coletar_numeros(quantidade):
+def coletar_numeros(quantidade: int) -> list[float]:
     """
     Coleta uma lista de números reais do usuário.
 
@@ -32,7 +32,7 @@ def coletar_numeros(quantidade):
     Retorna:
         list: Uma lista com os números reais inseridos.
     """
-    numeros = []
+    numeros: list[float] = []
     for i in range(1, quantidade + 1):
         numeros.append(obter_numero_real(i))
     return numeros
