@@ -1,6 +1,6 @@
 # Faça um programa que leia 4 notas, mostre as notas e a média na tela.
 
-def validar_notas(ordem):
+def validar_notas(ordem: float):
 
     while True:
 
@@ -20,10 +20,10 @@ def validar_notas(ordem):
 
             print('\033[1;31mPor favor coloque uma nota válida\033[m')
 
-def coletar_notas(quantidade):
+def coletar_notas(quantidade: int) -> list[float]: 
 
     global notas    
-    notas = []
+    notas: list[float] = []
 
     for i in range(1, quantidade + 1):
 
