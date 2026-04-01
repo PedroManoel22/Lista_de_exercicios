@@ -1,9 +1,16 @@
 # Faça um programa que peça as quatro notas de 10 alunos, calcule e armazene num vetor a média de cada aluno,
 # imprima o número de alunos com média maior ou igual a 7.0.
+from typing import TypedDict
 
-def coleta_dados_alunos(quantidade_alunos, quantidade_notas):
 
-    alunos = []
+class Aluno(TypedDict):
+    nome: str
+    notas: list[float]
+
+
+def coleta_dados_alunos(quantidade_alunos: int, quantidade_notas: int) -> list[Aluno]:
+
+    alunos: list[Aluno] = []
 
     for i in range(1, quantidade_alunos + 1):
 
@@ -16,8 +23,8 @@ def coleta_dados_alunos(quantidade_alunos, quantidade_notas):
                 break
 
             print('\033[1;31mPor favor insira um nome válido!\033[m')
-
-        notas_validas = []
+        
+        notas_validas: list[float] = []
 
         for j in range(1, quantidade_notas + 1):
 
@@ -40,14 +47,13 @@ def coleta_dados_alunos(quantidade_alunos, quantidade_notas):
 
                     print('\033[1;31mPor favor, coloque um valor numérico válido.\033[m')
     
-        aluno_info = {'nome': nome, 'notas': notas_validas}
-        alunos.append(aluno_info)
+            aluno_info: Aluno = {'nome': nome, 'notas': notas_validas}
+            alunos.append(aluno_info)
 
     return alunos
 
 
-
-def calcular_media(notas):
+def calcular_media(notas: list[float]) -> float:
 
     media = 0
 
@@ -59,7 +65,7 @@ def calcular_media(notas):
     return media
 
 
-def exibir_dados(dados):
+def exibir_dados(dados: list[Aluno] ):
 
     aprovados = 0
     LARGURA = 30
