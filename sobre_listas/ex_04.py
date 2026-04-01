@@ -1,6 +1,6 @@
 # Faça um programa que leia um vetor de 10 caracteres, e diga quantas consoantes foram lidas. Imprima as consoantes.
 
-def valida(tamanho):
+def valida(tamanho: int) -> str:
 
     global frase
 
@@ -18,7 +18,7 @@ def valida(tamanho):
     
     return frase
 
-def conta_consoantes(frase):
+def conta_consoantes(frase: str) -> int:
 
     global consoantes
     consoantes = 0
