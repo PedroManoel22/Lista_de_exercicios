@@ -2,8 +2,8 @@
 # Após isto, calcule a média anual das temperaturas e mostre todas as temperaturas acima da média anual, e em que mês elas ocorreram 
 # (mostrar o mês por extenso: 1 – Janeiro, 2 – Fevereiro, ...).
 
-meses = ['janeiro', 'fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-medias_meses = []
+meses: list[str] = ['janeiro', 'fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+medias_meses: list[float]= []
 
 for i in range(1, 13):
 
@@ -28,8 +28,11 @@ for i in range(1, 13):
 
 
 media_anual = sum(medias_meses) / 12
-print(f'A média anula foi de {media_anual:.2f}')
-medias_maiores = []
+
+print(f'\nA média anual foi de {media_anual:.2f}\n')
+
+medias_maiores: list[str] = []
+
 for i in range(len(medias_meses)):
 
     if medias_meses[i] > media_anual:
@@ -38,3 +41,4 @@ for i in range(len(medias_meses)):
 
 print('Meses que tiveram a média maior que a média anual: ')
 print(*medias_maiores, sep='\n')
+print()
