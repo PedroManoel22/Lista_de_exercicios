@@ -1,10 +1,10 @@
 # Faça um programa que leia 20 números inteiros e armazene-os num vetor. 
 # Armazene os números pares no vetor PAR e os números IMPARES no vetor impar. Imprima os três vetores
 
-def valida_coleta_int(ordem):
+def valida_coleta_int(ordem: int) -> list[int]:
 
     global numeros
-    numeros = []
+    numeros: list[int] = []
 
     for i in range(1, ordem + 1):
         while True:
@@ -24,12 +24,12 @@ def valida_coleta_int(ordem):
     return numeros
 
 
-def pares_impares(nums):
+def pares_impares(nums: list[int]) -> tuple[list[int], list[int]]:
 
     global pares
     global impares
-    pares = []
-    impares = []
+    pares: list[int] = []
+    impares: list[int] = []
 
     for num in nums:
 
