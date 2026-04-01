@@ -3,7 +3,7 @@
 from random import randint, uniform
 from pprint import pprint
 
-dados_alunos = [{'idade': randint(10, 18), 'altura': round(uniform(1.60, 2.00), 2)} for _ in range(30)]
+dados_alunos: list[dict[str, int | float]] = [{'idade': randint(10, 18), 'altura': round(uniform(1.60, 2.00), 2)} for _ in range(30)]
 
 media = sum([aluno['altura'] for aluno in dados_alunos])
 media = media / len(dados_alunos)
