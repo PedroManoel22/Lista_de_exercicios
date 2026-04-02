@@ -14,9 +14,9 @@
 # $1000 em diante 8
 
 
-def ler_salarios(quant):
+def ler_salarios(quant: int) -> list[int]:
 
-    vendas_funcionario = []
+    vendas_funcionario: list[int] = []
 
     for i in range(1, quant+1):
 
@@ -41,7 +41,7 @@ def ler_salarios(quant):
     return vendas_funcionario
 
 
-def conta_salarios(vendas_brutas):
+def conta_salarios(vendas_brutas: list[int]) -> list[int]:
 
     contadores_salario = [0] * 9
     
@@ -74,7 +74,7 @@ def conta_salarios(vendas_brutas):
     return contadores_salario
 
 
-def exibir_resultados(contadores):
+def exibir_resultados(contadores: list[int]) -> None:
 
     print('-------- Relatório de salários dos vendedores --------')
     for i, contador in enumerate(contadores):
