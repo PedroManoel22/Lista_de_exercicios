@@ -10,8 +10,9 @@
 # Calcule e mostre a quantidade de valores acima da média calculada; ok
 # Calcule e mostre a quantidade de valores abaixo de sete; ok
 # Encerre o programa com uma mensagem;
-def entrada_dados():
-    numeros = []
+def entrada_dados() -> list[int]:
+    numeros: list[int] = []
+
     while True:
         try:
             num = input('Insira um número inteiro: ')
@@ -26,7 +27,7 @@ def entrada_dados():
     return numeros
 
 
-def exibir_dados(nums):
+def exibir_dados(nums: list[int]) -> None:
 
     print(f'A quantidade de números inseridos foi de: {len(nums)} números')
     print('Números inseridos: ', end='')
