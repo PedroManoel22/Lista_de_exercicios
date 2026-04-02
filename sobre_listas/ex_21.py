@@ -35,9 +35,10 @@
 
 
 
-def coleta_dados(qtd):
-    nomes = []
-    kms_litro = []
+def coleta_dados(qtd: int) -> None:
+    nomes: list[str] = []
+    kms_litro: list[float] = []
+
     for i in range(1, qtd + 1):
         print(f'Veículo {i}')
         nomes.append(input('Nome: '))
@@ -47,9 +48,9 @@ def coleta_dados(qtd):
     return calcular_km_custo(nomes, kms_litro)
 
 
-def calcular_km_custo(nomes, kms_litro):
-    consumo_mil_km = []
-    custo_mil_km = []
+def calcular_km_custo(nomes: list[str], kms_litro: list[float]) -> None:
+    consumo_mil_km: list[float] = []
+    custo_mil_km: list[float] = []
 
     for i in range(0, len(nomes)):
         consumo = round(QUANTIDADE_KM / kms_litro[i], 1)
@@ -60,7 +61,7 @@ def calcular_km_custo(nomes, kms_litro):
     return exibir(nomes, kms_litro, consumo_mil_km, custo_mil_km)
 
 
-def exibir(nomes, kms_litro, consumo_mil, custo):
+def exibir(nomes: list[str], kms_litro: list[float], consumo_mil: list[float], custo: list[float]) -> None:
     print('\nRelatório Final')
     
     max_nome_len = max(len(nome) for nome in nomes) if nomes else 0
@@ -94,7 +95,7 @@ def exibir(nomes, kms_litro, consumo_mil, custo):
     # Encontrar o menor consumo de forma mais clara
     # zip() é uma função Pythônica que agrupa elementos de múltiplas listas.
     # min() com a chave 'key' é ideal para encontrar o menor valor baseado em uma métrica.
-    menor_consumo, nome_menor_consumo = min(zip(consumo_mil, nomes))
+    _, nome_menor_consumo = min(zip(consumo_mil, nomes))
     
     print(f'\nO menor consumo é do {nome_menor_consumo}')
 
