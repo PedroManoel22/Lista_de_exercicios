@@ -43,10 +43,11 @@
 
 
 
+def coletar_salarios() -> None:
+    salarios: list[float] = []
+    qtd_colaboradores: int = 0
+    salario_float: float = 0.0
 
-def coletar_salarios():
-    salarios = []
-    qtd_colaboradores = 0
     while True:
         try:
             salario = input('Salário: ')
@@ -66,9 +67,10 @@ def coletar_salarios():
     return calcular_abono(salarios, qtd_colaboradores)
 
 
-def calcular_abono(salarios, qtd):
-    salarios_abonos = []
+def calcular_abono(salarios: list[float], qtd: int) -> None:
+    salarios_abonos: list[float] = []
     abono_min = 0
+
     for salario in salarios:
         if salario < 700:
             salarios_abonos.append(100)
@@ -80,7 +82,7 @@ def calcular_abono(salarios, qtd):
     return exibir_resultados(salarios, salarios_abonos, qtd, abono_min)
 
 
-def exibir_resultados(salarios, abonos, qtd, abono_min):
+def exibir_resultados(salarios: list[float], abonos: list[float], qtd: int, abono_min: int) -> None:
     print()
     print(f'{'Salário':>5}{'- Abono':>9}')
     for i in range(0, len(salarios)):
