@@ -1,6 +1,15 @@
 # Faça um programa que leia um vetor de 5 números inteiros e mostre-os.
 
 
+def coletar_numeros(quantidade: int) -> list[int]:
+
+    numeros: list[int] = []
+
+    for i in range(1, quantidade + 1):
+        numeros.append(validar_num(i))
+    return numeros
+
+
 def validar_num(x: int):
 
     while True:
@@ -12,14 +21,6 @@ def validar_num(x: int):
             print('\033[1;31mColoque um número inteiro!\033[m')
         
     return num_int
-
-def coletar_numeros(quantidade: int) -> list[int]:
-
-    numeros: list[int] = []
-
-    for i in range(1, quantidade + 1):
-        numeros.append(validar_num(i))
-    return numeros
 
 
 if __name__ == '__main__':
