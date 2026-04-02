@@ -8,7 +8,7 @@
 # F
 
 
-def valida_nome():
+def valida_nome() -> str:
     while True:
         nome = input('Insira seu nome: ').strip()
 
@@ -23,7 +23,7 @@ def valida_nome():
         return nome
     
 
-def nome_escada_invertida(nome):
+def nome_escada_invertida(nome: str) -> None:
     tamanho = len(nome) - 1
     for i in range(tamanho, -1, -1):
         print(nome[i])
