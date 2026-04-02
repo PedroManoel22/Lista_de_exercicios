@@ -5,7 +5,7 @@
 
 
 
-def valida_frase():
+def valida_frase() -> str:
      while True:
         frase = input('Insira uma frase: ').lower()
 
@@ -19,7 +19,7 @@ def valida_frase():
 
         return frase
 
-def conta_vogais_espacos(frase):
+def conta_vogais_espacos(frase: str) -> str:
     vogais = ['a', 'e', 'i', 'o', 'u']
     cont_vogais = 0
     cont_espacos = 0
