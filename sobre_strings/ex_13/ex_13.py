@@ -5,7 +5,7 @@
 
 from random import randint, shuffle
 
-def ler_arquivo():
+def ler_arquivo() -> list[str]:
     caminho_arquivo = 'sobre_strings.py/ex_13/palavras.txt'
     with open(caminho_arquivo, 'r') as arquivo:
         palavras = arquivo.read().split()
@@ -13,18 +13,19 @@ def ler_arquivo():
     return palavras
     
 
-def escolher_e_embaralhar(palavras):
-    tamanho = len(palavras)
-    indice = randint(0, tamanho - 1)
-    palavra = palavras[indice]
-    palavra_embaralhada = list(palavras[indice])
+def escolher_e_embaralhar(palavras: list[str]) -> str:
+    tamanho: int = len(palavras)
+    indice: int = randint(0, tamanho - 1)
+    palavra: str = palavras[indice]
+    palavra_embaralhada: list[str] = list(palavras[indice])
     shuffle(palavra_embaralhada)
 
     return adivinhacao(palavra_embaralhada, palavra)
 
 
-def adivinhacao(palavra_embaralhada, palavra):
-    palavra_original = []
+def adivinhacao(palavra_embaralhada: list[str], palavra: str):
+    palavra_original: list[str] = []
+    
     print('A palavra é:')
     for letra in palavra_embaralhada:
         palavra_original.append(letra)
