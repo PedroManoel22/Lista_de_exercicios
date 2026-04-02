@@ -16,7 +16,7 @@ def valida_frase():
 
         return frase
 
-def e_palindromo(frase):
+def e_palindromo(frase: str) -> None:
     frase_ao_contrario = frase[::-1]
 
     if frase_ao_contrario == frase:
