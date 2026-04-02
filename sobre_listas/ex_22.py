@@ -24,9 +24,10 @@ situacoes = {'necessita da esfera': 1,
              'necessita troca do cabo ou conector': 3,
              'quebrado ou inutilizado': 4}
 
-def dados_mouses():
-    situacoes_mouses = []
+def dados_mouses() -> None:
+    situacoes_mouses: list[int] = []
     qtd = 0
+
     while True:
         try:
             id = input('Id do mouse: ')
@@ -63,7 +64,7 @@ def dados_mouses():
     return contabiliza_exibir_situacoes(situacoes_mouses, qtd)
 
 
-def contabiliza_exibir_situacoes(estado_mouses, qtd):
+def contabiliza_exibir_situacoes(estado_mouses: list[int], qtd: int) -> None:
     print()
     print(f'Quantidades de mouses: {qtd}')
     print()
@@ -73,8 +74,5 @@ def contabiliza_exibir_situacoes(estado_mouses, qtd):
             if v == i:
                 print(f'{i} - {k} {total}')
         
-        
-
-
+    
 dados_mouses()
-
