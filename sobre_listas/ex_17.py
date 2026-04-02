@@ -17,9 +17,10 @@
 # Saltos: 6.5 - 6.1 - 6.2 - 5.4 - 5.3
 # Média dos saltos: 5.9 m
 
+from typing import Any
 
-def dados():
-    atletas = []
+def dados() -> list[dict[str, Any]]:
+    atletas: list[dict[str, Any]] = []
     qtd_atleta = 0
 
     while True:
@@ -34,10 +35,11 @@ def dados():
             break
         
         else:
-            atleta = {}
-            saltos = []
+            atleta: dict[str, Any] = {}
+            saltos: list[int] = []
             atleta['nome'] = nome
             qtd_atleta += 1
+
             print(f'atleta: {nome}')
            
            # Pegar saltos
@@ -58,7 +60,7 @@ def dados():
     return atletas
 
 
-def exibir_dados(dados):
+def exibir_dados(dados: list[dict[str, Any]]):
     print()
     print('Resultado Final:')
     print()
