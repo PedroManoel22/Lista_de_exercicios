@@ -7,7 +7,7 @@
 # FULAN
 # FULANO
 
-def valida_nome():
+def valida_nome() -> str:
     while True:
         nome = input('Insira seu nome: ').strip()
 
@@ -22,7 +22,7 @@ def valida_nome():
         return nome
     
 
-def nome_escada(nome):
+def nome_escada(nome: str) -> None:
     tamanho = len(nome)
     for i in range(tamanho + 1):
         print(nome[:i])
