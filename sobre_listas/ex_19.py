@@ -31,24 +31,24 @@
 
 # O Sistema Operacional mais votado foi o Unix, com 3500 votos, correspondendo a 40%
 
-import random
 import numpy as np
 
-print('Qual o melhor sistema operacional para uso em servidores?')
+def exibir_menu():
+    print('Qual o melhor sistema operacional para uso em servidores?')
 
-print()
+    print()
 
-print('Possíveis respostas são:')
-print()
+    print('Possíveis respostas são:')
+    print()
 
-print('''
-1- Windows Server
-2- Unix
-3- Linux
-4- Netware
-5- Mac OS
-6- Outro
-      ''')
+    print('''
+    1- Windows Server
+    2- Unix
+    3- Linux
+    4- Netware
+    5- Mac OS
+    6- Outro
+        ''')
 
 votos = []
 QUANTIDADE_VOTOS = 20125
@@ -62,11 +62,11 @@ sistemas_operacionais = {'Windows Server': 1,
                          }
 
 
-def coleta_votos():
+def coleta_votos() -> None:
     total_votos = 0
+    votos: list[int] = []
     for i in range(1, QUANTIDADE_VOTOS + 1):
 
-       
         voto_int = np.random.randint(1, 6)
 
         if i == QUANTIDADE_VOTOS + 1:
@@ -85,7 +85,7 @@ def coleta_votos():
     return contagem_votos_exibir(votos, total_votos)
 
 
-def contagem_votos_exibir(votos, votos_total):
+def contagem_votos_exibir(votos: list[int], votos_total: int) -> None:
     votos_nao_repetidos = set(votos)
     
     print(f'{"Sistema Operacional":<20}{"votos":>10}{" %":>10}')
@@ -108,4 +108,5 @@ def contagem_votos_exibir(votos, votos_total):
     print(f'Total{votos_total:>23}')
 
 if __name__  == '__main__':
+    exibir_menu()
     coleta_votos()
