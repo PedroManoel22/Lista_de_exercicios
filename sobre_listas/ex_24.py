@@ -4,9 +4,13 @@
 # Dica: use um vetor de contadores(1-6) e uma função para gerar numeros aleatórios, simulando os lançamentos dos dados.
 
 from random import randint
+
+
 QUANTIDADE_DADOS = 100
-numeros = []
-qtd = 0
+numeros: list[int] = []
+qtd: int = 0
+qtd_num: int = 0
+
 for _ in range(1,QUANTIDADE_DADOS + 1):
     numeros.append(randint(1, 6))
     qtd += 1
