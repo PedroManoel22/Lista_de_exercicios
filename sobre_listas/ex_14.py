@@ -11,7 +11,7 @@
 
 
 
-def valida_resposta(pergunta):
+def valida_resposta(pergunta: str) -> str:
    
     while True:
         try:
@@ -23,7 +23,7 @@ def valida_resposta(pergunta):
         except (IOError, IndexError):
             print('Coloque apenas [S] ou [N].')
 
-def perguntas_investigacao():
+def perguntas_investigacao() -> str:
     
     perguntas = [
         "Telefonou para a vítima? ",
@@ -33,7 +33,7 @@ def perguntas_investigacao():
         "Já trabalhou com a vítima? "
     ]
 
-    respostas = []
+    respostas: list[str] = []
     print("Responda apenas [S] para Sim ou [N] para Não.\n")
     for pergunta in perguntas:
         resposta = valida_resposta(pergunta)
