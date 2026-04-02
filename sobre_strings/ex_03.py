@@ -7,7 +7,7 @@
 # N
 # O
 
-def valida_nome():
+def valida_nome() -> str:
     while True:
         nome = input('Insira seu nome: ')
 
@@ -21,7 +21,7 @@ def valida_nome():
 
         return nome
 
-def imprime_nome_vertical(nome):
+def imprime_nome_vertical(nome: str) -> None:
     print('\nNome na vertical:\n')
     for letra in nome:
         print(letra)
