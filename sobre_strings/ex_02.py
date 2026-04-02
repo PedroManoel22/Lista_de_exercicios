@@ -2,7 +2,7 @@
 # letras maiúsculas. Dica: lembre−se que ao informar o nome o usuário pode digitar letras maiúsculas ou minúsculas.
 
 
-def obter_nome():
+def obter_nome() -> str:
     while True:
         nome = input('Digite seu nome: ').strip() 
 
@@ -17,7 +17,7 @@ def obter_nome():
         return nome
 
 
-def nome_ao_contrario(nome):
+def nome_ao_contrario(nome: str) -> None:
     print(f'{nome[::-1].upper()}')
 
 
