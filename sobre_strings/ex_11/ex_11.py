@@ -15,7 +15,7 @@
 
 from random import randint
 
-def ler_arquivo():
+def ler_arquivo() -> list[str]:
     caminho_arquivo = 'Lista_de_exercicios/sobre_strings.py/ex_11/palavras.txt'
     with open(caminho_arquivo, 'r') as arquivo:
         palavras = arquivo.read().split()
@@ -23,20 +23,20 @@ def ler_arquivo():
     return palavras
 
 
-def escolhe_palavra(palavras):
+def escolhe_palavra(palavras: list[str]) -> str:
     tamanho = len(palavras)
     escolhido = randint(0, tamanho - 1)
 
     return palavras[escolhido]
 
 
-def comecar_jogo(palavra_escolhida):
-    tamanho_palavra = len(palavra_escolhida)
+def comecar_jogo(palavra_escolhida: str) -> None:
+    tamanho_palavra: int = len(palavra_escolhida)
     palavra_escolhida  = palavra_escolhida.lower()
-    caracteres =  ['_ '] * tamanho_palavra
+    caracteres: list[str] =  ['_ '] * tamanho_palavra
     palavra_formada = ''
-    cont = 0
-    letras_ja_escolhidas = []
+    cont: int = 0
+    letras_ja_escolhidas: list[str] = []
 
 
     while True:
