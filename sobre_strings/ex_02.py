@@ -21,5 +21,6 @@ def nome_ao_contrario(nome: str) -> None:
     print(f'{nome[::-1].upper()}')
 
 
-nome_validado = obter_nome()
-nome_ao_contrario(nome_validado)
+if __name__ == "__main__":
+    nome_validado = obter_nome()
+    nome_ao_contrario(nome_validado)
