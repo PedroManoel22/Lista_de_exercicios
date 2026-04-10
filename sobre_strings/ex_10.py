@@ -1,7 +1,8 @@
 # Número por extenso. Escreva um programa que solicite ao usuário a digitação 
 # de um número até 99 e imprima-o na tela por extenso.
+ 
+from num2words import num2words # type: ignore
 
-from num2words import num2words
 while True:
     try:
         numero = int(input('Insira um número de 0 a 99: '))
@@ -16,4 +17,4 @@ while True:
         
 numero_por_extenso = num2words(numero, lang='pt-BR')
 print()
-print(f'\033[1;32m{numero_por_extenso}\033[m')
+print(f'\033[1;32m{numero_por_extenso}\033[m\n')
