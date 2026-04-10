@@ -9,12 +9,14 @@
 
 import re # Módulo essencial para manipulação avançada de strings (Regex)
 
-def valida_e_corrige_telefone(numero_original):
+def valida_e_corrige_telefone(numero_original: str) -> str:
 
     # remove todos os caracteres que não são números
     telefone_limpo = re.sub(r'\D', '', numero_original)
     tamanho = len(telefone_limpo)
     telefone_final = telefone_limpo
+    telefone_formatado: str = ""
+
     print('\n--- Análise ---')
     print()
     print(f'Telefone fornecido: {numero_original}')
@@ -40,7 +42,8 @@ def valida_e_corrige_telefone(numero_original):
         print(f'Telefone corrigido sem formatação: {telefone_final}')
         print(f'Telefone corrigido com formatação: {telefone_formatado}')
         print()
+    
 
-        return telefone_formatado
+    return telefone_formatado
     
 valida_e_corrige_telefone('461-0133')
