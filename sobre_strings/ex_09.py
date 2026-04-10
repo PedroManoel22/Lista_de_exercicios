@@ -3,7 +3,7 @@
 
 import re
 cpf = input('Insira seu cpf no seguinte formato, xxx.xxx.xxx-xx: ')
-def valida_cpf(cpf):
+def valida_cpf(cpf: str) -> None:
     
     regex = re.compile(
         r"^(?!(\d)\1{2}\.\1{3}\.\1{3}-\1{2})(\d{3}\.\d{3}\.\d{3}-\d{2})$",
@@ -54,3 +54,4 @@ def valida_cpf(cpf):
 
 if __name__ == '__main__':
     valida_cpf(cpf)
+    
