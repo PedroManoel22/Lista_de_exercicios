@@ -20,7 +20,7 @@
 # 'G' pode se tornar '6' ou '9'
 # 'Z' pode se tornar '2' ou '$' 
 
-def gerar_leet_speak(texto):
+def gerar_leet_speak(texto: str) -> str:
     
     tabela_leet = {
         'a': '4',
@@ -47,4 +47,3 @@ if __name__ == '__main__':
     print('\n~~~~~~~~Resultado~~~~~~~~')
     print(f'Texto original: {entrada_usuario}')
     print(f'Texto em L33t: {resultado}')
-    ''
