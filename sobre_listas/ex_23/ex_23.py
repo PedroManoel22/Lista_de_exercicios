@@ -30,7 +30,7 @@
 
 
 def ler_arquivo() -> dict[str, str]:
-    nome_arquivo = "lista_de_exercicios/Lista_de_exercicios/sobre_listas/ex_23/usuarios.txt"
+    nome_arquivo = "Lista_de_exercicios/sobre_listas/ex_23/usuarios.txt"
     dados_usuarios: dict[str, str] = {}
 
     try:
@@ -55,7 +55,7 @@ def ler_arquivo() -> dict[str, str]:
 
 def gerar_relatorio(dados_usuarios: dict[str, str]) -> None:
 
-    endereco_arquivo = "lista_de_exercicios/Lista_de_exercicios/sobre_listas/ex_23/relatório.txt"
+    endereco_arquivo = "Lista_de_exercicios/sobre_listas/ex_23/relatorio.txt"
 
     cabecalho = """
 ACME Inc.               Uso do espaço em disco pelos usuários
