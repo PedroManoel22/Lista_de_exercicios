@@ -35,16 +35,3 @@
 # 3 Gerar a saída numa página html
 # 4 Criar o programa que lê as pastas e gera o arquivo inicial
 
-from funcoes import gerar_relatorio, ler_arquivo
-
-def main():
-    gerar_relatorio(ler_arquivo())
-
-# 1 Ordenar os usuários pelo percentual de espaço ocupado
-def ordenar():
-    ...
-
-
-
-if __name__ == '__main__':
-    main()
