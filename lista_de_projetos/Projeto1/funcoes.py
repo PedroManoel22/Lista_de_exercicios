@@ -1,78 +1,62 @@
+from typing import Any
 
-def ler_arquivo() -> dict[str, str]:
-    nome_arquivo = "Lista_de_exercicios/lista_de_projetos/Projeto1/usuarios.txt"
-    dados_usuarios: dict[str, str] = {}
+def ler_arquivo(nome_arquivo: str) -> dict[str, Any]:
+    dados_usuarios: dict[str, Any] = {}
+    count: int = 0
 
     try:
         with open(nome_arquivo, 'r', encoding='utf-8') as arquivo:
             
             for _, linha in enumerate(arquivo):
                 partes = linha.strip().split()
-                print(f"\nPartes {partes}\n")
-                
-                if len(partes) == 2:
-                    nome = partes[0]
-                    numero = partes[1]
-                    
-                    dados_usuarios[nome] = numero
+                if len(partes) == 5:
+                    dados_usuarios[f"linha{count}"] = partes
+                count += 1
+
+            return dados_usuarios
 
     except FileNotFoundError:
         print(f"Erro: O arquivo \033[1;31m'{nome_arquivo}'\033[m não foi encontrado.")
+        return {}
+    
     except Exception as e:
         print(f"Ocorreu um erro inesperado: {e}")
+        return {}
     
-    return dados_usuarios
+
+# 1. Ordenar os usuários pelo percentual de espaço ocupado
+
+def ordenar(dados: dict[str, Any]):
+    from rich import print
+
+    usuarios_ordenados = sorted(dados.items(), key=lambda x: x[1][-1], reverse=True)
+    
+    print("\nLista Ordenada pelo percentual de espaço ocupado:")
+    print(f"\n{'Nr.':<4} {'Usuário':<15} {'Espaço':<10} {'%':<10}")
+    for _, ds in usuarios_ordenados:
+        # 'dados' é a lista completa que você capturou
+        print(f"{ds[0]:<4} {ds[1]:<15} {ds[2]:>7} {ds[3]} {ds[4]:>10}")
+
+    print()
 
 
-def gerar_relatorio(dados_usuarios: dict[str, str]) -> None:
-
-    endereco_arquivo = "Lista_de_exercicios/lista_de_projetos/Projeto1/relatorio.txt"
-
-    cabecalho = """
-ACME Inc.               Uso do espaço em disco pelos usuários
-------------------------------------------------------------------------
-Nr.  Usuário        Espaço utilizado     % do uso
-    """
-
-    LARGURA_NOME = 15   
-    LARGURA_MB = 10         
-    LARGURA_PCT = 16
-    espaco_total = 0
-    qtd_usuarios = 0
-
-    try:
-        with open(endereco_arquivo, 'w', encoding='utf-8') as arquivo:
-            arquivo.write(cabecalho)
-            arquivo.write('\n')
-
-            # contabiliza o total de memória usada
-            for _, nome in enumerate(dados_usuarios):
-                espaco_total += int(dados_usuarios[nome])
-                
-            espaco_total = round(espaco_total / (1024 * 1024), 2)
-            espaco_total_str = str(espaco_total)
-
-            # pega os dados de todos os funcionários
-            for indice, nome in enumerate(dados_usuarios):
-                espaco = round(int(dados_usuarios[nome]) / (1024 * 1024), 2)
-                espaco_str = str(espaco)
-                indice = indice + 1
-                indice_str = str(indice)
-                espaco = round(int(dados_usuarios[nome]) / (1024 * 1024), 2)
-                porcentagem = round((espaco * 100) / espaco_total, 2)
-
-                arquivo.write(
-                    f"{indice_str} "  
-                    f"{nome:<{LARGURA_NOME}} " 
-                    f"{espaco_str:>{LARGURA_MB}} MB"
-                    f"{porcentagem:>{LARGURA_PCT}}%\n"
-                             )
-            arquivo.write(f'\nEspaço total ocupado: {espaco_total_str} MB')
-            qtd_usuarios = len(dados_usuarios)
-            espaco_medio = round(espaco_total / qtd_usuarios, 2)
-            arquivo.write(f'\nEspaço médio ocupado: {espaco_medio} MB')
+# 2. Mostrar apenas os n primeiros em uso, definido pelo usuário
+def mostrar_n_primeiros(dados: dict[str, Any]):
+    while True:
+        try:
+            x = int(input(f'Informe a quantidade de usuário para o relatório [1 - {len(dados)}]: '))
             
-            print(f"Arquivo '\033[1;32m{endereco_arquivo}\033[m' criado e escrito com sucesso.")
+            if x > 80 or x < 1:
+                print(f"\n[red]Por favor insira um valor entre 1 e {len(dados)}[/]\n")
+                continue
+            break
+        
+        except (ValueError, KeyboardInterrupt):
+            print("\n[red]Por favor insira um número inteiro![/]\n")
+    
+    print(f"\nUsuários de 1 a {x}:\n")
+    for i in range(x):
+        print(list(dados.values())[i])
 
-    except IOError as e:
-        print(f"Erro ao manipular o arquivo: {e}")
+    print()
+
