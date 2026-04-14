@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Relatório de Uso</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+      :root {
+        --bg-color: #0b0f1a;
+        --card-bg: #161b2c;
+        --primary: #8b5cf6;
+        --secondary: #38bdf8;
+        --accent: #10b981;
+        --text-main: #f1f5f9;
+        --text-dim: #94a3b8;
+        --border: #2d3748;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        background-image:
+          radial-gradient(
+            at 0% 0%,
+            rgba(139, 92, 246, 0.15) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 100% 100%,
+            rgba(56, 189, 248, 0.1) 0px,
+            transparent 50%
+          );
+        color: var(--text-main);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 40px;
+        background: linear-gradient(to right, #a78bfa, #38bdf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -1px;
+      }
+
+      /* Container Principal */
+      .report-card {
+        background: var(--card-bg);
+        width: 100%;
+        max-width: 900px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+      }
+
+      /* Cabeçalho da Tabela */
+      .table-header {
+        display: grid;
+        grid-template-columns: 80px 1fr 140px 100px;
+        padding: 20px 30px;
+        background: rgba(255, 255, 255, 0.03);
+        border-bottom: 1px solid var(--border);
+        color: var(--text-dim);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .table-body {
+        max-height: 600px;
+        overflow-y: auto;
+      }
+
+      /* Custom Scrollbar */
+      .table-body::-webkit-scrollbar {
+        width: 6px;
+      }
+      .table-body::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 10px;
+      }
+
+      /* Linhas da Tabela */
+      .user-row {
+        display: grid;
+        grid-template-columns: 80px 1fr 140px 100px;
+        padding: 16px 30px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        align-items: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .user-row:hover {
+        background: rgba(139, 92, 246, 0.08);
+        transform: scale(1.005);
+        border-left: 4px solid var(--primary);
+      }
+
+      .col-number {
+        color: var(--text-dim);
+        font-weight: 600;
+        font-size: 0.85rem;
+      }
+
+      .col-name {
+        color: var(--text-main);
+        font-weight: 500;
+        font-size: 1rem;
+      }
+
+      .col-space {
+        text-align: right;
+        font-family: "JetBrains Mono", "Fira Code", monospace;
+        color: var(--accent);
+        font-size: 0.95rem;
+        background: rgba(16, 185, 129, 0.1);
+        padding: 4px 10px;
+        border-radius: 6px;
+        justify-self: end;
+      }
+
+      .col-percent {
+        text-align: right;
+        font-weight: 700;
+        color: var(--secondary);
+        font-size: 0.95rem;
+      }
+
+      /* Ajuste de responsividade básico */
+      @media (max-width: 600px) {
+        .table-header,
+        .user-row {
+          grid-template-columns: 50px 1fr 100px 70px;
+          padding: 12px 15px;
+        }
+        h1 {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Relatório de Uso de Disco</h1>
+    <div class="table-body">
+      <div class="user-row">
+        <span class="col-number">1</span>
+        <span class="col-name">alexandre</span>
+        <span class="col-space">434.99 MB</span>
+        <span class="col-percent">1.08%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">2</span>
+        <span class="col-name">anderson</span>
+        <span class="col-space">1187.99 MB</span>
+        <span class="col-percent">2.94%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">3</span>
+        <span class="col-name">antonio</span>
+        <span class="col-space">117.74 MB</span>
+        <span class="col-percent">0.29%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">4</span>
+        <span class="col-name">carlos</span>
+        <span class="col-space">87.03 MB</span>
+        <span class="col-percent">0.22%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">5</span>
+        <span class="col-name">cesar</span>
+        <span class="col-space">0.94 MB</span>
+        <span class="col-percent">0.0%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">6</span>
+        <span class="col-name">rosemary</span>
+        <span class="col-space">752.88 MB</span>
+        <span class="col-percent">1.86%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">7</span>
+        <span class="col-name">fernanda.rocha</span>
+        <span class="col-space">118.8 MB</span>
+        <span class="col-percent">0.29%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">8</span>
+        <span class="col-name">gabriel.costa</span>
+        <span class="col-space">43.2 MB</span>
+        <span class="col-percent">0.11%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">9</span>
+        <span class="col-name">beatriz.santos</span>
+        <span class="col-space">857.47 MB</span>
+        <span class="col-percent">2.12%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">10</span>
+        <span class="col-name">tiago.oliveira</span>
+        <span class="col-space">12.21 MB</span>
+        <span class="col-percent">0.03%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">11</span>
+        <span class="col-name">larissa.lima</span>
+        <span class="col-space">1383.69 MB</span>
+        <span class="col-percent">3.42%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">12</span>
+        <span class="col-name">marcos.silva</span>
+        <span class="col-space">316.76 MB</span>
+        <span class="col-percent">0.78%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">13</span>
+        <span class="col-name">juliana.souza</span>
+        <span class="col-space">742.34 MB</span>
+        <span class="col-percent">1.84%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">14</span>
+        <span class="col-name">ricardo.pereira</span>
+        <span class="col-space">53.03 MB</span>
+        <span class="col-percent">0.13%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">15</span>
+        <span class="col-name">aline.ferreira</span>
+        <span class="col-space">1049.25 MB</span>
+        <span class="col-percent">2.6%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">16</span>
+        <span class="col-name">bruno.almeida</span>
+        <span class="col-space">93.89 MB</span>
+        <span class="col-percent">0.23%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">17</span>
+        <span class="col-name">carla.rodrigues</span>
+        <span class="col-space">615.41 MB</span>
+        <span class="col-percent">1.52%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">18</span>
+        <span class="col-name">diego.gomes</span>
+        <span class="col-space">1163.58 MB</span>
+        <span class="col-percent">2.88%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">19</span>
+        <span class="col-name">elisa.martins</span>
+        <span class="col-space">84.78 MB</span>
+        <span class="col-percent">0.21%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">20</span>
+        <span class="col-name">felipe.araujo</span>
+        <span class="col-space">529.05 MB</span>
+        <span class="col-percent">1.31%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">21</span>
+        <span class="col-name">gabriela.pinto</span>
+        <span class="col-space">1239.97 MB</span>
+        <span class="col-percent">3.07%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">22</span>
+        <span class="col-name">hugo.barbosa</span>
+        <span class="col-space">44.97 MB</span>
+        <span class="col-percent">0.11%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">23</span>
+        <span class="col-name">isabela.castro</span>
+        <span class="col-space">879.1 MB</span>
+        <span class="col-percent">2.18%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">24</span>
+        <span class="col-name">joao.ribeiro</span>
+        <span class="col-space">319.86 MB</span>
+        <span class="col-percent">0.79%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">25</span>
+        <span class="col-name">karina.carvalho</span>
+        <span class="col-space">107.72 MB</span>
+        <span class="col-percent">0.27%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">26</span>
+        <span class="col-name">lucas.mendes</span>
+        <span class="col-space">752.54 MB</span>
+        <span class="col-percent">1.86%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">27</span>
+        <span class="col-name">mariana.nunes</span>
+        <span class="col-space">424.96 MB</span>
+        <span class="col-percent">1.05%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">28</span>
+        <span class="col-name">nicolas.frota</span>
+        <span class="col-space">921.36 MB</span>
+        <span class="col-percent">2.28%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">29</span>
+        <span class="col-name">olivia.paiva</span>
+        <span class="col-space">2.72 MB</span>
+        <span class="col-percent">0.01%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">30</span>
+        <span class="col-name">pedro.vieira</span>
+        <span class="col-space">1143.84 MB</span>
+        <span class="col-percent">2.83%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">31</span>
+        <span class="col-name">renata.machado</span>
+        <span class="col-space">64.21 MB</span>
+        <span class="col-percent">0.16%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">32</span>
+        <span class="col-name">samuel.correia</span>
+        <span class="col-space">805.76 MB</span>
+        <span class="col-percent">1.99%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">33</span>
+        <span class="col-name">tatiane.bezerra</span>
+        <span class="col-space">149.01 MB</span>
+        <span class="col-percent">0.37%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">34</span>
+        <span class="col-name">vitor.tavares</span>
+        <span class="col-space">889.87 MB</span>
+        <span class="col-percent">2.2%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">35</span>
+        <span class="col-name">yasmin.farias</span>
+        <span class="col-space">42.72 MB</span>
+        <span class="col-percent">0.11%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">36</span>
+        <span class="col-name">andre.cavalcante</span>
+        <span class="col-space">1144.89 MB</span>
+        <span class="col-percent">2.83%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">37</span>
+        <span class="col-name">bianca.queiroz</span>
+        <span class="col-space">296.71 MB</span>
+        <span class="col-percent">0.73%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">38</span>
+        <span class="col-name">caio.sales</span>
+        <span class="col-space">742.39 MB</span>
+        <span class="col-percent">1.84%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">39</span>
+        <span class="col-name">daniela.lins</span>
+        <span class="col-space">18.88 MB</span>
+        <span class="col-percent">0.05%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">40</span>
+        <span class="col-name">eduardo.porto</span>
+        <span class="col-space">1006.22 MB</span>
+        <span class="col-percent">2.49%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">41</span>
+        <span class="col-name">flavia.moura</span>
+        <span class="col-space">84.54 MB</span>
+        <span class="col-percent">0.21%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">42</span>
+        <span class="col-name">guilherme.maia</span>
+        <span class="col-space">603.1 MB</span>
+        <span class="col-percent">1.49%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">43</span>
+        <span class="col-name">helena.leite</span>
+        <span class="col-space">420.78 MB</span>
+        <span class="col-percent">1.04%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">44</span>
+        <span class="col-name">igor.batista</span>
+        <span class="col-space">1230.38 MB</span>
+        <span class="col-percent">3.04%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">45</span>
+        <span class="col-name">jessica.duarte</span>
+        <span class="col-space">74.29 MB</span>
+        <span class="col-percent">0.18%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">46</span>
+        <span class="col-name">kleber.freitas</span>
+        <span class="col-space">488.7 MB</span>
+        <span class="col-percent">1.21%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">47</span>
+        <span class="col-name">larissa.viana</span>
+        <span class="col-space">32.04 MB</span>
+        <span class="col-percent">0.08%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">48</span>
+        <span class="col-name">murilo.aguiar</span>
+        <span class="col-space">1049.8 MB</span>
+        <span class="col-percent">2.6%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">49</span>
+        <span class="col-name">natalia.rebelo</span>
+        <span class="col-space">434.99 MB</span>
+        <span class="col-percent">1.08%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">50</span>
+        <span class="col-name">otavio.dantas</span>
+        <span class="col-space">85.31 MB</span>
+        <span class="col-percent">0.21%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">51</span>
+        <span class="col-name">patricia.borges</span>
+        <span class="col-space">1356.44 MB</span>
+        <span class="col-percent">3.36%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">52</span>
+        <span class="col-name">quezia.amorim</span>
+        <span class="col-space">243.28 MB</span>
+        <span class="col-percent">0.6%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">53</span>
+        <span class="col-name">rafael.campos</span>
+        <span class="col-space">636.58 MB</span>
+        <span class="col-percent">1.58%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">54</span>
+        <span class="col-name">sabrina.guimaraes</span>
+        <span class="col-space">10.68 MB</span>
+        <span class="col-percent">0.03%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">55</span>
+        <span class="col-name">thiago.fontes</span>
+        <span class="col-space">848.67 MB</span>
+        <span class="col-percent">2.1%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">56</span>
+        <span class="col-name">ursula.leal</span>
+        <span class="col-space">413.37 MB</span>
+        <span class="col-percent">1.02%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">57</span>
+        <span class="col-name">valter.peixoto</span>
+        <span class="col-space">94.53 MB</span>
+        <span class="col-percent">0.23%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">58</span>
+        <span class="col-name">walter.serpa</span>
+        <span class="col-space">1197.62 MB</span>
+        <span class="col-percent">2.96%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">59</span>
+        <span class="col-name">xavier.brito</span>
+        <span class="col-space">319.15 MB</span>
+        <span class="col-percent">0.79%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">60</span>
+        <span class="col-name">yago.valente</span>
+        <span class="col-space">630.76 MB</span>
+        <span class="col-percent">1.56%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">61</span>
+        <span class="col-name">zuleica.coelho</span>
+        <span class="col-space">43.77 MB</span>
+        <span class="col-percent">0.11%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">62</span>
+        <span class="col-name">arthur.fagundes</span>
+        <span class="col-space">752.02 MB</span>
+        <span class="col-percent">1.86%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">63</span>
+        <span class="col-name">barbara.lobo</span>
+        <span class="col-space">106.91 MB</span>
+        <span class="col-percent">0.26%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">64</span>
+        <span class="col-name">claudio.assuncao</span>
+        <span class="col-space">859.15 MB</span>
+        <span class="col-percent">2.13%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">65</span>
+        <span class="col-name">debora.neves</span>
+        <span class="col-space">116.66 MB</span>
+        <span class="col-percent">0.29%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">66</span>
+        <span class="col-name">erick.prado</span>
+        <span class="col-space">42.1 MB</span>
+        <span class="col-percent">0.1%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">67</span>
+        <span class="col-name">fabiana.vasconcelos</span>
+        <span class="col-space">1271.63 MB</span>
+        <span class="col-percent">3.15%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">68</span>
+        <span class="col-name">gabriel.andrade</span>
+        <span class="col-space">203.04 MB</span>
+        <span class="col-percent">0.5%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">69</span>
+        <span class="col-name">heitor.melo</span>
+        <span class="col-space">52.57 MB</span>
+        <span class="col-percent">0.13%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">70</span>
+        <span class="col-name">isis.teles</span>
+        <span class="col-space">1135.25 MB</span>
+        <span class="col-percent">2.81%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">71</span>
+        <span class="col-name">jorge.vargas</span>
+        <span class="col-space">423.19 MB</span>
+        <span class="col-percent">1.05%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">72</span>
+        <span class="col-name">kauan.lopes</span>
+        <span class="col-space">64.66 MB</span>
+        <span class="col-percent">0.16%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">73</span>
+        <span class="col-name">leticia.figueiredo</span>
+        <span class="col-space">841.62 MB</span>
+        <span class="col-percent">2.08%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">74</span>
+        <span class="col-name">mario.antunes</span>
+        <span class="col-space">1387.74 MB</span>
+        <span class="col-percent">3.43%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">75</span>
+        <span class="col-name">nayara.bastos</span>
+        <span class="col-space">317.19 MB</span>
+        <span class="col-percent">0.78%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">76</span>
+        <span class="col-name">oscar.cordeiro</span>
+        <span class="col-space">94.53 MB</span>
+        <span class="col-percent">0.23%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">77</span>
+        <span class="col-name">priscila.guerrero</span>
+        <span class="col-space">740.48 MB</span>
+        <span class="col-percent">1.83%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">78</span>
+        <span class="col-name">quiteria.morais</span>
+        <span class="col-space">11.73 MB</span>
+        <span class="col-percent">0.03%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">79</span>
+        <span class="col-name">ronaldo.pacheco</span>
+        <span class="col-space">1049.18 MB</span>
+        <span class="col-percent">2.6%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">80</span>
+        <span class="col-name">simone.rezende</span>
+        <span class="col-space">0.04 MB</span>
+        <span class="col-percent">0.0%</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">-</span>
+        <span class="col-name">Espaço</span>
+        <span class="col-space">total ocupado:</span>
+        <span class="col-percent">40411.22</span>
+      </div>
+      <div class="user-row">
+        <span class="col-number">-</span>
+        <span class="col-name">Espaço</span>
+        <span class="col-space">médio ocupado:</span>
+        <span class="col-percent">505.14</span>
+      </div>
+    </div>
+  </body>
+</html>
