@@ -1,8 +1,7 @@
 # Qual o valor do salário médio?
 
-from data import data
 import numpy as np
-
+from data import data
 
 salarios: list[float] = []
 
@@ -12,5 +11,5 @@ for d in data:
             salarios.append(float(v))
 
 
-media_salarios = np.mean(salarios)
-print(f"\nA média dos salários é: R${media_salarios:.2f}\n")        
+media_salarios: float = np.mean(salarios)  # type: ignore
+print(f"\nA média dos salários é: R${media_salarios:.2f}\n")
