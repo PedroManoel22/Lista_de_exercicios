@@ -1,10 +1,9 @@
-# Calcule as principais estatísticas descritivas do salário: 
+# Calcule as principais estatísticas descritivas do salário:
 # mínimo, 1o quartil, média, mediana, 3o quartíl, máximo e desvio padrão
 
-from data import data
 import numpy as np
+from data import data
 from ex01 import media_salarios
-
 
 salarios: list[float] = []
 
@@ -14,7 +13,7 @@ for d in data:
     for k, v in d.items():
         if k == "salario":
             salarios.append(float(v))
-    
+
 # soma_salarios = sum(salario)
 
 # Mímino
