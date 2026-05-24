@@ -1,5 +1,5 @@
 # Qual a quantidade de colunas do DataFrame
-from data import data 
+from data import data
 
 number_of_columns: int = 0
 
