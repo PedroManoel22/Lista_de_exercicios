@@ -39,7 +39,7 @@
 def gerar_relatorio_html(caminho_txt: str, caminho_output: str) -> None:
 
     html_rows: list[str] = []
-    
+
     # 1. Cabeçalho do HTML (Mantendo seu estilo)
     html_template_top = """<!DOCTYPE html>
 <html lang="pt-br">
@@ -61,21 +61,25 @@ def gerar_relatorio_html(caminho_txt: str, caminho_output: str) -> None:
 """
 
     html_rows = []
-    
+
     # 2. Processamento dos dados
     try:
-        with open(caminho_txt, 'r', encoding='utf-8') as file:
+        with open(caminho_txt, "r", encoding="utf-8") as file:
             # Pula as linhas de cabeçalho do TXT (ajuste conforme a necessidade)
-            linhas = file.readlines()[5:] 
-            
+            linhas = file.readlines()[5:]
+
             for linha in linhas:
                 partes = linha.split()
                 if len(partes) >= 4:
                     # Desempacotamento de lista (Pythonic way)
                     numero, nome, espaco, unidade, percentual = (
-                        partes[0], partes[1], partes[2], partes[3], partes[4]
+                        partes[0],
+                        partes[1],
+                        partes[2],
+                        partes[3],
+                        partes[4],
                     )
-                    
+
                     # Cria a linha formatada
                     row = (
                         f'        <div class="user-row">\n'
@@ -83,7 +87,7 @@ def gerar_relatorio_html(caminho_txt: str, caminho_output: str) -> None:
                         f'            <span class="col-name">{nome}</span>\n'
                         f'            <span class="col-space">{espaco} {unidade}</span>\n'
                         f'            <span class="col-percent">{percentual}</span>\n'
-                        f'        </div>'
+                        f"        </div>"
                     )
                     html_rows.append(row)
 
@@ -93,13 +97,16 @@ def gerar_relatorio_html(caminho_txt: str, caminho_output: str) -> None:
 
     # 3. Fechamento e Salvamento
     html_template_bottom = "\n    </div>\n</body>\n</html>"
-    
+
     full_html = html_template_top + "\n".join(html_rows) + html_template_bottom
-    
-    with open(caminho_output, 'w', encoding='utf-8') as f:
+
+    with open(caminho_output, "w", encoding="utf-8") as f:
         f.write(full_html)
-        
+
     print(f"Sucesso! Relatório gerado em: {caminho_output}")
 
+
 if __name__ == "__main__":
-    gerar_relatorio_html("Lista_de_exercicios/lista_de_projetos/Projeto1/relatorio.txt", "index.html")
+    gerar_relatorio_html(
+        "Lista_de_exercicios/lista_de_projetos/Projeto1/relatorio.txt", "index.html"
+    )
