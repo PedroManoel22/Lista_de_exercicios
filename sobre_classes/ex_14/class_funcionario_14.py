@@ -5,20 +5,21 @@
 # harry = funcionário('Harry', 25000)
 # harry.aumentar_salario(10)
 
+
 class Funcionario:
     def __init__(self, nome: str, salario: float):
         self.nome = nome
         self.salario: float = salario
-    
+
     def mostra_nome(self):
         print(self.nome)
-    
 
     def mostra_salario(self):
-        print(f'R${self.salario}')
-    
+        print(f"R${self.salario}")
+
     def aumentar_salario(self, taxa: float):
         self.salario += self.salario * (taxa / 100)
-        print(f'\nO salário de {self.nome} foi para {self.salario} ')
-       
-funcionario1 = Funcionario('Pedro', 7000)
+        print(f"\nO salário de {self.nome} foi para {self.salario} ")
+
+
+funcionario1 = Funcionario("Pedro", 7000)
