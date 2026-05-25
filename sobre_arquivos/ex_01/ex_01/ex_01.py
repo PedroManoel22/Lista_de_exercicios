@@ -27,27 +27,37 @@
 
 import re
 
-caminho_arquivo = 'Lista_de_exercicios/sobre_arquivos/ex_01/ex_01/enderecos_IP.txt'
+caminho_arquivo = "Lista_de_exercicios/sobre_arquivos/ex_01/ex_01/enderecos_IP.txt"
+
 
 def ler_arquivo():
-    with open(caminho_arquivo, 'r') as arquivo:
+    with open(caminho_arquivo, "r") as arquivo:
         enderecos = arquivo.read().split()
     return enderecos
 
 
-OCTETO_VALIDO = r'(?:25[0-5]|2[0-4]\d|1\d{2}|\d{1,2})'
+OCTETO_VALIDO = r"(?:25[0-5]|2[0-4]\d|1\d{2}|\d{1,2})"
 
-def validar_ipv4_corrigido(ip_string: str):
+
+def validar_ipv4_corrigido(ip_string: str) -> None:
     validos: list[str] = []
     invalidos: list[str] = []
 
     padrao = re.compile(
-    r'^' +
-    r'(' + OCTETO_VALIDO + r')\.' +
-    r'(' + OCTETO_VALIDO + r')\.' +
-    r'(' + OCTETO_VALIDO + r')\.' +
-    r'(' + OCTETO_VALIDO + r')' +
-    r'$'
+        r"^"
+        + r"("
+        + OCTETO_VALIDO
+        + r")\."
+        + r"("
+        + OCTETO_VALIDO
+        + r")\."
+        + r"("
+        + OCTETO_VALIDO
+        + r")\."
+        + r"("
+        + OCTETO_VALIDO
+        + r")"
+        + r"$"
     )
 
     for ip in ip_string:
@@ -62,19 +72,22 @@ def validar_ipv4_corrigido(ip_string: str):
     return escrever_arquivo(validos, invalidos)
 
 
-def escrever_arquivo(validos: list[str], invalidos: list[str]):
-    caminho_arquivo = 'Lista_de_exercicios/sobre_arquivos/ex_01/ex_01/enderecos_IP_validos.txt'
-    with open(caminho_arquivo, 'w', encoding='utf-8') as arquivo:
-        arquivo.write('[Endereços válidos:]\n')
+def escrever_arquivo(validos: list[str], invalidos: list[str]) -> None:
+    caminho_arquivo = (
+        "Lista_de_exercicios/sobre_arquivos/ex_01/ex_01/enderecos_IP_validos.txt"
+    )
+    with open(caminho_arquivo, "w", encoding="utf-8") as arquivo:
+        arquivo.write("[Endereços válidos:]\n")
 
         for valido in validos:
-            arquivo.writelines(f'{valido}\n')
-        
-        arquivo.write('\n[endereços Inválidos:]\n')
+            arquivo.writelines(f"{valido}\n")
+
+        arquivo.write("\n[endereços Inválidos:]\n")
 
         for invalido in invalidos:
-            arquivo.writelines(f'{invalido}\n')
+            arquivo.writelines(f"{invalido}\n")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     enderecos: list[str] = ler_arquivo()
-    validar_ipv4_corrigido(enderecos) # type: ignore
+    validar_ipv4_corrigido(enderecos)  # type: ignore
