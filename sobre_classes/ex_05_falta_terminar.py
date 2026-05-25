@@ -6,8 +6,9 @@
 
 import re
 
+
 class ContaCorrente:
-    padrao_num_conta = re.compile(r'\d{8}-\d{2}')
+    padrao_num_conta = re.compile(r"\d{8}-\d{2}")
     padrao_nome = re.compile(r"^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]+$", re.UNICODE)
 
     def __init__(self, num_conta: str, nome_correntista: str, saldo: float = 0):
@@ -15,17 +16,17 @@ class ContaCorrente:
 
         # valida num_conta
         if not valido:
-            print('\n\033[1;31mPadrão da conta errado!\033[m')
-            print('Por favor insira o número da conta no seguinte padrão: xxxxxxxx-xx\n')
+            print("\n\033[1;31mPadrão da conta errado!\033[m")
+            print(
+                "Por favor insira o número da conta no seguinte padrão: xxxxxxxx-xx\n"
+            )
             pede_conta()
 
         # Valida nome_correntista
         if not self.padrao_nome.match(self.nome_correntista):
-            print('O nome possui caracteres errados!')
+            print("O nome possui caracteres errados!")
             pede_nome()
-            
-            
-        
+
         else:
             self.nome_correntista = nome_correntista
         self.num_conta = num_conta
@@ -33,11 +34,11 @@ class ContaCorrente:
 
 
 def pede_conta():
-        return input('Insira o número da sua conta: ')
+    return input("Insira o número da sua conta: ")
 
 
 def pede_nome():
-        return input('Insira o nome do correntista: ')
+    return input("Insira o nome do correntista: ")
 
 
 def criar_conta():
@@ -48,15 +49,13 @@ def criar_conta():
             num_conta = pede_conta()
             nome = pede_nome()
             conta = ContaCorrente(num_conta, nome)
-            print('\033[1;32mTodos os dados estão válidos!')
-        
+            print("\033[1;32mTodos os dados estão válidos!")
+
         except ValueError as e:
-             print(f'Erro de validação. Tente novamente. Detalhe: {e}')
-    
+            print(f"Erro de validação. Tente novamente. Detalhe: {e}")
+
     return conta
 
 
-
-if __name__ == '__main__': 
-    
+if __name__ == "__main__":
     conta = criar_conta()
