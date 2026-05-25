@@ -3,14 +3,15 @@
 # Padronize em sua função que todos os caracteres serão devolvidos em caixa alta ou caixa baixa, independentemente de como foram digitados.
 from random import shuffle
 
-palavra = input('Insira sua palavra: ')
+palavra = input("Insira sua palavra: ")
+
 
 def embaralhar(p: str) -> None:
     lista = list(p)
     embaralhado = shuffle(lista)
-    embaralhado = ''.join(lista).upper()
+    embaralhado = "".join(lista).upper()
     print(embaralhado)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     embaralhar(palavra)

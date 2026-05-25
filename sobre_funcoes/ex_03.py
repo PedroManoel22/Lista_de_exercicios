@@ -8,7 +8,7 @@ def coleta_numeros() -> list[int]:
     numeros: list[int] = []
     while True:
         try:
-            x = input('Insira um número: ')
+            x = input("Insira um número: ")
             x_int = int(x)
             loop += 1
             numeros.append(x_int)
@@ -17,19 +17,20 @@ def coleta_numeros() -> list[int]:
                 break
 
         except ValueError:
-            print('\033[1;31mPor favor coloque um número inteiro!\033[m')
-        
+            print("\033[1;31mPor favor coloque um número inteiro!\033[m")
+
         except Exception as e:
-            print(f'\033[1;36mError inesperado! {e}\033[m')
+            print(f"\033[1;36mError inesperado! {e}\033[m")
 
     return numeros
 
 
 def soma(x: int, y: int, z: int) -> str:
     soma = x + y + z
-    
-    return f'A soma entre {x} + {y} + {z} = {soma}'
 
-if __name__ == '__main__':
+    return f"A soma entre {x} + {y} + {z} = {soma}"
+
+
+if __name__ == "__main__":
     numeros = coleta_numeros()
     print(soma(*numeros))

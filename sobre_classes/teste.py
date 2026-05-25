@@ -30,21 +30,21 @@
 
 #         for num in l1:
 #             result1 = result1 * 10 + num
-        
+
 #         for num in l2:
 #             result2 = result2 * 10 + num
-        
+
 #         result = str(result1 + result2)
 #         result = result[::-1]
 #         end_result = []
 
 #         for num in result:
 #             end_result.append(int(num))
-        
+
 
 #         return end_result
-        
-        
+
+
 # # l1 = [2, 4, 3]
 # # l2 = [5, 6, 4]
 # # l1 = [0]
@@ -53,11 +53,12 @@
 # l2 = [9,9,9,9]
 # solution = Solution()
 # print(solution.addTwoNumbers(l1,l2))
-  # --- 1. Definição da Estrutura de Dados (ListNode) ---
+# --- 1. Definição da Estrutura de Dados (ListNode) ---
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
 
 # --- 2. A Solução do Problema ---
 class Solution:
@@ -65,27 +66,28 @@ class Solution:
         dummy_head = ListNode(0)
         current = dummy_head
         carry = 0
-        
+
         # Use 'is not None' ou o próprio objeto em condições Pythônicas
         while l1 or l2 or carry:
-            
             val1 = l1.val if l1 else 0
             val2 = l2.val if l2 else 0
-            
+
             total_sum = val1 + val2 + carry
             carry = total_sum // 10
             digit = total_sum % 10
-            
+
             current.next = ListNode(digit)
             current = current.next
-            
+
             # Avança os ponteiros
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
-            
+
         return dummy_head.next
 
+
 # --- 3. Funções Auxiliares para Teste Local (Prática Profissional) ---
+
 
 def create_linked_list(arr):
     """Cria uma ListNode a partir de uma lista Python."""
@@ -98,6 +100,7 @@ def create_linked_list(arr):
         current = current.next
     return head
 
+
 def print_linked_list(head):
     """Imprime os valores de uma ListNode."""
     arr = []
@@ -105,11 +108,12 @@ def print_linked_list(head):
     while current:
         arr.append(current.val)
         current = current.next
-    return arr # Retorna a lista como array
+    return arr  # Retorna a lista como array
+
 
 # --- 4. Testes (Exemplo 1: 342 + 465 = 807) ---
-l1_arr = [2, 4, 3] # Representa 342
-l2_arr = [5, 6, 4] # Representa 465
+l1_arr = [2, 4, 3]  # Representa 342
+l2_arr = [5, 6, 4]  # Representa 465
 
 l1 = create_linked_list(l1_arr)
 l2 = create_linked_list(l2_arr)

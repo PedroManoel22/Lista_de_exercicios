@@ -22,11 +22,10 @@
 
 from random import randint
 
-def gerar_matrizes() ->  list[list[int]]:
 
-    matriz = [[0, 0, 0],
-        [0, 0, 0], 
-        [0, 0, 0]]
+def gerar_matrizes() -> list[list[int]]:
+
+    matriz = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
     for i in range(3):
         for z in range(3):
@@ -36,7 +35,7 @@ def gerar_matrizes() ->  list[list[int]]:
     return matriz
 
 
-def valida_matriz(matriz: list[list[int]]):
+def valida_matriz(matriz: list[list[int]]) -> None:
     somas_linhas: list[int] = []
     somas_colunas: list[int] = []
     elementos_diagonal: list[int] = []
@@ -53,7 +52,6 @@ def valida_matriz(matriz: list[list[int]]):
             soma_colunas += matriz[z][i]
         somas_colunas.append(soma_colunas)
 
-
     # soma diagonal
     for i in range(3):
         elementos_diagonal.append(matriz[i][i])
@@ -61,7 +59,7 @@ def valida_matriz(matriz: list[list[int]]):
     soma_diagonal = sum(elementos_diagonal)
 
     # soma diagonal_segundaria
-    N = len(matriz) 
+    N = len(matriz)
     diagonal_secundaria = [matriz[i][N - 1 - i] for i in range(N)]
 
     soma_diagonal_segundaria = sum(diagonal_secundaria)
@@ -70,25 +68,22 @@ def valida_matriz(matriz: list[list[int]]):
     soma_colunas = int(soma_colunas / 3)
 
     if len({soma_linhas, soma_colunas, soma_diagonal, soma_diagonal_segundaria}) == 1:
-        print('\033[1;32mA matriz é um quadrado mágico\033[m')
+        print("\033[1;32mA matriz é um quadrado mágico\033[m")
         for i in range(3):
             for z in range(3):
-                print(f'{matriz[i][z]} ', end='')
+                print(f"{matriz[i][z]} ", end="")
             print()
-    
+
     else:
-        print(f'\033[1;31mA matriz não é um quadrado mágico!\033[m')
+        print("\033[1;31mA matriz não é um quadrado mágico!\033[m")
         # cont = 0
         # qtd = 2
         gerar_matrizes()
-           
-            
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     matriz = gerar_matrizes()
 
-    matriz = [[8, 1, 6],
-              [3, 5, 7], 
-              [4, 9, 2]] # quadrado mágico
-    
-    valida_matriz(matriz)
+    matriz = [[8, 1, 6], [3, 5, 7], [4, 9, 2]]  # quadrado mágico
 
+    valida_matriz(matriz)

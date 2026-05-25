@@ -1,19 +1,20 @@
 # Faça uma função que informe a quantidade de dígitos de um determinado número inteiro informado.
 
+
 def qtd_digitos(num: int) -> str:
     num_str = str(num)
-    return f'O número \033[1;36m{num}\033[m tem {len(num_str)} dígitos'
+    return f"O número \033[1;36m{num}\033[m tem {len(num_str)} dígitos"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     while True:
         try:
-            x = int(input('Informe um número inteiro: '))
+            x = int(input("Informe um número inteiro: "))
             print(qtd_digitos(x))
             break
 
         except ValueError:
-            print('\033[1;31mPor favor coloque um número inteiro!\033[m')
-        
+            print("\033[1;31mPor favor coloque um número inteiro!\033[m")
+
         except Exception as e:
-            print(f'Erro inesperado: {type(e).__name__}')
+            print(f"Erro inesperado: {type(e).__name__}")
