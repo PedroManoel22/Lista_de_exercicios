@@ -5,8 +5,8 @@
 # um número de identificação do mouse o tipo de defeito:
 
 # necessita da esfera;
-# necessita de limpeza; 
-# a.necessita troca do cabo ou conector; 
+# necessita de limpeza;
+# a.necessita troca do cabo ou conector;
 # a.quebrado ou inutilizado.
 # Uma identificação igual a zero encerra o programa.
 # Ao final o programa deverá emitir o seguinte relatório:
@@ -19,10 +19,13 @@
 # 3- necessita troca do cabo ou conector  15                     15%
 # 4- quebrado ou inutilizado              15                     15%
 
-situacoes = {'necessita da esfera': 1,
-             'necessita de limpeza': 2,
-             'necessita troca do cabo ou conector': 3,
-             'quebrado ou inutilizado': 4}
+situacoes = {
+    "necessita da esfera": 1,
+    "necessita de limpeza": 2,
+    "necessita troca do cabo ou conector": 3,
+    "quebrado ou inutilizado": 4,
+}
+
 
 def dados_mouses() -> None:
     situacoes_mouses: list[int] = []
@@ -30,49 +33,50 @@ def dados_mouses() -> None:
 
     while True:
         try:
-            id = input('Id do mouse: ')
+            id = input("Id do mouse: ")
             id_int = int(id)
-            
+
             if id_int == 0:
                 break
 
             else:
                 print()
-                print('\033[1;49;32m1- necessita da esfera\n2- necessita de limpeza\n3- necessita troca do cabo ou conector\n4- quebrado ou inutilizado\033[m')
+                print(
+                    "\033[1;49;32m1- necessita da esfera\n2- necessita de limpeza\n3- necessita troca do cabo ou conector\n4- quebrado ou inutilizado\033[m"
+                )
                 print()
                 qtd += 1
 
                 try:
                     while True:
-                        situacao = input(f'Qual a situação do mouse de id ({id_int}): ')
+                        situacao = input(f"Qual a situação do mouse de id ({id_int}): ")
                         situacao_int = int(situacao)
 
                         if situacao_int not in situacoes.values():
-                            print('\033[4;49;35mEsta situação não existe!\033[m')
+                            print("\033[4;49;35mEsta situação não existe!\033[m")
                             print()
                         else:
                             situacoes_mouses.append(situacao_int)
                             break
-                
-                except ValueError:
-                    print('\033[1;49;31mPor favor coloque uma situaçõa válida!\033[m')
 
+                except ValueError:
+                    print("\033[1;49;31mPor favor coloque uma situaçõa válida!\033[m")
 
         except ValueError:
-            print('\033[1;31mPor favor coloque um número de id válido!\033[m')
+            print("\033[1;31mPor favor coloque um número de id válido!\033[m")
 
     return contabiliza_exibir_situacoes(situacoes_mouses, qtd)
 
 
 def contabiliza_exibir_situacoes(estado_mouses: list[int], qtd: int) -> None:
     print()
-    print(f'Quantidades de mouses: {qtd}')
+    print(f"Quantidades de mouses: {qtd}")
     print()
     for i in range(1, 5):
         total = estado_mouses.count(i)
         for k, v in situacoes.items():
             if v == i:
-                print(f'{i} - {k} {total}')
-        
-    
+                print(f"{i} - {k} {total}")
+
+
 dados_mouses()

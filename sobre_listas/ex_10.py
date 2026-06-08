@@ -7,7 +7,6 @@ vetor_2: list[int] = [2, 4, 6, 8, 10]
 vetor_3: list[int] = []
 
 for i in range(len(vetor_1)):
-
     vetor_3.append(vetor_1[i])
     vetor_3.append(vetor_2[i])
 

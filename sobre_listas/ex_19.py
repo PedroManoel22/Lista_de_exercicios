@@ -11,11 +11,11 @@
 # 5- Mac OS
 # 6- Outro
 
-# Você foi contratado para desenvolver um programa que leia o resultado da enquete e informe ao final o resultado da mesma. 
-# O programa deverá ler os valores até ser informado o valor 0, 
-# que encerra a entrada dos dados. Não deverão ser aceitos valores além dos válidos para o programa (0 a 6). 
-# Os valores referentes a cada uma das opções devem ser armazenados num vetor. 
-# Após os dados terem sido completamente informados, o programa deverá calcular a percentual de cada um dos concorrentes e informar o vencedor da enquete. 
+# Você foi contratado para desenvolver um programa que leia o resultado da enquete e informe ao final o resultado da mesma.
+# O programa deverá ler os valores até ser informado o valor 0,
+# que encerra a entrada dos dados. Não deverão ser aceitos valores além dos válidos para o programa (0 a 6).
+# Os valores referentes a cada uma das opções devem ser armazenados num vetor.
+# Após os dados terem sido completamente informados, o programa deverá calcular a percentual de cada um dos concorrentes e informar o vencedor da enquete.
 # O formato da saída foi dado pela empresa, e é o seguinte:
 
 # Sistema Operacional     Votos   %
@@ -33,40 +33,42 @@
 
 import numpy as np
 
+
 def exibir_menu():
-    print('Qual o melhor sistema operacional para uso em servidores?')
+    print("Qual o melhor sistema operacional para uso em servidores?")
 
     print()
 
-    print('Possíveis respostas são:')
+    print("Possíveis respostas são:")
     print()
 
-    print('''
+    print("""
     1- Windows Server
     2- Unix
     3- Linux
     4- Netware
     5- Mac OS
     6- Outro
-        ''')
+        """)
+
 
 votos = []
 QUANTIDADE_VOTOS = 20125
 
-sistemas_operacionais = {'Windows Server': 1,
-                         'Unix': 2,
-                         'Linux': 3,
-                         'Netware': 4,
-                         'Mac OS': 5,
-                         'Outro': 6
-                         }
+sistemas_operacionais = {
+    "Windows Server": 1,
+    "Unix": 2,
+    "Linux": 3,
+    "Netware": 4,
+    "Mac OS": 5,
+    "Outro": 6,
+}
 
 
 def coleta_votos() -> None:
     total_votos = 0
     votos: list[int] = []
     for i in range(1, QUANTIDADE_VOTOS + 1):
-
         voto_int = np.random.randint(1, 6)
 
         if i == QUANTIDADE_VOTOS + 1:
@@ -76,21 +78,21 @@ def coleta_votos() -> None:
             break
 
         elif voto_int > 6 or voto_int < 1:
-            print('\033[1;31mColoque um número entre 0 a 6!\033[m')
+            print("\033[1;31mColoque um número entre 0 a 6!\033[m")
 
         else:
             votos.append(voto_int)
             total_votos += 1
-                
+
     return contagem_votos_exibir(votos, total_votos)
 
 
 def contagem_votos_exibir(votos: list[int], votos_total: int) -> None:
     votos_nao_repetidos = set(votos)
-    
-    print(f'{"Sistema Operacional":<20}{"votos":>10}{" %":>10}')
-    print('-------------------      -----         ---')
-    
+
+    print(f"{'Sistema Operacional':<20}{'votos':>10}{' %':>10}")
+    print("-------------------      -----         ---")
+
     for voto in votos_nao_repetidos:
         total = votos.count(voto)
 
@@ -99,14 +101,15 @@ def contagem_votos_exibir(votos: list[int], votos_total: int) -> None:
 
         else:
             percentual = 0
-        
+
         for k, v in sistemas_operacionais.items():
             if v == voto:
-                print(f'{k:<20}{total:8}{percentual:>15.1f}')
-    print('-------------------      -----')
+                print(f"{k:<20}{total:8}{percentual:>15.1f}")
+    print("-------------------      -----")
 
-    print(f'Total{votos_total:>23}')
+    print(f"Total{votos_total:>23}")
 
-if __name__  == '__main__':
+
+if __name__ == "__main__":
     exibir_menu()
     coleta_votos()
