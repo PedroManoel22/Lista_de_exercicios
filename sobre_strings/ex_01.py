@@ -9,22 +9,24 @@
 # As duas strings são de tamanhos diferentes.
 # As duas strings possuem conteúdo diferente.
 
-string1 = 'Brasil Hexa 2006'
-string2 = 'Brasil! Hexa 2006!'
+string1 = "Brasil Hexa 2006"
+string2 = "Brasil! Hexa 2006!"
 tamanho_str1 = len(string1)
 tamanho_str2 = len(string2)
 
-print(f'Tamanho de "{string1}": {tamanho_str1} caracteres\n'
-      f'tamanho de "{string2}": {tamanho_str2} caracteres')
+print(
+    f'Tamanho de "{string1}": {tamanho_str1} caracteres\n'
+    f'tamanho de "{string2}": {tamanho_str2} caracteres'
+)
 
 if tamanho_str1 == tamanho_str2:
-    print('As duas strings são de tamanhos iguais.')
+    print("As duas strings são de tamanhos iguais.")
 
 else:
-    print('As duas strings são de tamanhos diferentes.')
+    print("As duas strings são de tamanhos diferentes.")
 
 if string1 in string2:
-    print('As duas strings possuem conteúdo igual.')
+    print("As duas strings possuem conteúdo igual.")
 
 else:
-    print('As duas strings possuem conteúdo diferente.')
+    print("As duas strings possuem conteúdo diferente.")

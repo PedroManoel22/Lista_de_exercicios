@@ -4,23 +4,27 @@
 # quantas vezes aparecem as vogais a, e, i, o, u.
 
 
-
 def valida_frase() -> str:
-     while True:
-        frase = input('Insira uma frase: ').lower()
+    while True:
+        frase = input("Insira uma frase: ").lower()
 
         if not frase:
-            print('\033[1;31mPor favor coloque uma frase (o campo não pode ser vazio)\033[m')
+            print(
+                "\033[1;31mPor favor coloque uma frase (o campo não pode ser vazio)\033[m"
+            )
             continue
-        
+
         if frase.isdigit():
-            print(f'\033[1;33m ⚠️  Entrada inválida: A frase não pode ser um número puro. Tente novamente.\033[m')
+            print(
+                "\033[1;33m ⚠️  Entrada inválida: A frase não pode ser um número puro. Tente novamente.\033[m"
+            )
             continue
 
         return frase
 
+
 def conta_vogais_espacos(frase: str) -> str:
-    vogais = ['a', 'e', 'i', 'o', 'u']
+    vogais = ["a", "e", "i", "o", "u"]
     cont_vogais = 0
     cont_espacos = 0
 
@@ -28,13 +32,14 @@ def conta_vogais_espacos(frase: str) -> str:
         if letra in vogais:
             cont_vogais += 1
 
-        if letra == ' ':
+        if letra == " ":
             cont_espacos += 1
-    return (f'Existem {cont_espacos} espaços em branco na sua frase!\n'
-            f'Apareceram {cont_vogais} vogais na sua frase!')
+    return (
+        f"Existem {cont_espacos} espaços em branco na sua frase!\n"
+        f"Apareceram {cont_vogais} vogais na sua frase!"
+    )
 
 
-if __name__  == '__main__':
+if __name__ == "__main__":
     frase_valida = valida_frase()
     print(conta_vogais_espacos(frase_valida))
-    

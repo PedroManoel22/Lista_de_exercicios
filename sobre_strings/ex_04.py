@@ -7,20 +7,25 @@
 # FULAN
 # FULANO
 
+
 def valida_nome() -> str:
     while True:
-        nome = input('Insira seu nome: ').strip()
+        nome = input("Insira seu nome: ").strip()
 
         if not nome:
-            print('\033[1;31mPor favor coloque um nome (o campo não pode ser vazio)\033[m')
+            print(
+                "\033[1;31mPor favor coloque um nome (o campo não pode ser vazio)\033[m"
+            )
             continue
-        
+
         if nome.isdigit():
-            print(f'\033[1;33m ⚠️  Entrada inválida: O nome não pode ser um número puro. Tente novamente.\033[m')
+            print(
+                "\033[1;33m ⚠️  Entrada inválida: O nome não pode ser um número puro. Tente novamente.\033[m"
+            )
             continue
 
         return nome
-    
+
 
 def nome_escada(nome: str) -> None:
     tamanho = len(nome)
@@ -28,7 +33,6 @@ def nome_escada(nome: str) -> None:
         print(nome[:i])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     nome_valido = valida_nome()
     nome_escada(nome_valido)
-

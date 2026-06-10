@@ -7,25 +7,32 @@
 # N
 # O
 
+
 def valida_nome() -> str:
     while True:
-        nome = input('Insira seu nome: ')
+        nome = input("Insira seu nome: ")
 
         if not nome:
-            print('\033[1;31mPor favor coloque um nome (o campo não pode ser vazio)\033[m')
+            print(
+                "\033[1;31mPor favor coloque um nome (o campo não pode ser vazio)\033[m"
+            )
             continue
-        
+
         if nome.isdigit():
-            print(f'\033[1;33m ⚠️  Entrada inválida: O nome não pode ser um número puro. Tente novamente.\033[m')
+            print(
+                "\033[1;33m ⚠️  Entrada inválida: O nome não pode ser um número puro. Tente novamente.\033[m"
+            )
             continue
 
         return nome
 
+
 def imprime_nome_vertical(nome: str) -> None:
-    print('\nNome na vertical:\n')
+    print("\nNome na vertical:\n")
     for letra in nome:
         print(letra)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     nome_valido = valida_nome()
     imprime_nome_vertical(nome_valido)
